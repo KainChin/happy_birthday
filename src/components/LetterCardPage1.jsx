@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
 const letterPaperStyle = {
@@ -12,24 +13,7 @@ const letterPaperStyle = {
   padding: '38px 26px 28px 26px',
   boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(212, 175, 55, 0.08)',
   border: '1.5px solid rgba(212, 175, 55, 0.35)',
-  textAlign: 'left',
-  transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
-};
-
-const waxSealStyle = {
-  position: 'absolute',
-  top: '-20px',
-  left: '50%',
-  transform: 'translateX(-50%)',
-  width: '46px',
-  height: '46px',
-  borderRadius: '50%',
-  background: 'radial-gradient(circle at 35% 35%, #7a1f33 0%, #4a101d 70%, #2e0811 100%)',
-  border: '2px solid rgba(229, 193, 88, 0.6)',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  boxShadow: '0 6px 16px rgba(0, 0, 0, 0.6)'
+  textAlign: 'left'
 };
 
 const nextBtnStyle = {
@@ -54,19 +38,19 @@ export const LetterCardPage1 = ({ name, onNext }) => {
 
   return (
     <div style={letterPaperStyle}>
-      <div style={waxSealStyle}>
-        <span style={{ fontFamily: 'var(--font-serif)', color: '#f7e5a9', fontSize: '1.2rem', fontWeight: 700 }}>K</span>
-      </div>
+      <PaperclipIcon />
 
-      <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', lineHeight: 1.55, color: '#361520' }}>
-        <p style={{ fontWeight: 600, marginBottom: '10px' }}>Gửi [{displayName}],</p>
-        <p style={{ marginBottom: '8px' }}>
-          Chúc mừng sinh nhật người bạn đặc biệt nhất của tôi.
+      <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.25rem', lineHeight: 1.6, color: '#361520' }}>
+        <p style={{ fontWeight: 600, marginBottom: '8px' }}>Gửi [{displayName}],</p>
+        <p style={{ fontWeight: 600, color: '#611e32', marginBottom: '10px' }}>
+          Chúc mừng sinh nhật cô gái đặc biệt!
         </p>
-        <p style={{ marginBottom: '8px' }}>
-          Hôm nay là một ngày thật đẹp để gửi đến bạn những tình cảm chân thành và ấm áp nhất.
+        <p style={{ marginBottom: '10px' }}>
+          Bước sang tuổi mới, chúc cậu luôn giữ trọn vẻ rạng rỡ, xinh đẹp và nụ cười cuốn hút này. Mong rằng trên chặng đường sự nghiệp phía trước, mọi dự định của cậu đều hanh thông, gặt hái thật nhiều thành tựu rực rỡ và luôn kiêu hãnh tỏa sáng theo cách riêng của mình.
         </p>
-        <p>Tôi có viết tặng bạn một bài thơ nhỏ, hãy lật lá thư này để đọc nhé...</p>
+        <p style={{ fontStyle: 'italic', color: '#521c2e' }}>
+          Tớ có chuẩn bị một điều đặc biệt dành riêng cho cậu ở trang tiếp theo...
+        </p>
       </div>
 
       <button style={nextBtnStyle} onClick={onNext}>

@@ -34,11 +34,11 @@ export const CelebrationLetter = ({ name }) => {
       <div style={envelopeBackStyle} />
       <div style={{ position: 'relative', width: '100%', zIndex: 2 }}>
         {page === 1 ? (
-          <div key="page1" className="animate-fade-in">
+          <div key="page1" className="animate-card-shuffle-in">
             <LetterCardPage1 name={name} onNext={() => setPage(2)} />
           </div>
         ) : (
-          <div key="page2" className="animate-fade-in">
+          <div key="page2" className="animate-card-shuffle-in">
             <LetterCardPage2 name={name} onPrev={() => setPage(1)} />
           </div>
         )}
