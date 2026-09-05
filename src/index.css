@@ -63,28 +63,39 @@ html, body, #root {
   align-items: center;
 }
 
-@media (max-width: 860px) {
+/* Mobile Stack Layout & Horizontal Carousel (< 768px) */
+@media (max-width: 768px) {
   .celebration-dashboard-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 32px !important;
-  }
-
-  .polaroid-side-container {
-    flex-direction: row !important;
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 16px !important;
+    gap: 28px !important;
     width: 100% !important;
   }
-}
 
-@media (max-width: 480px) {
-  .login-card-container {
-    padding: 30px 18px 26px 18px !important;
-    border-radius: 22px !important;
+  .desktop-only-gallery {
+    display: none !important;
   }
-  
+
+  .mobile-photos-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    width: 100% !important;
+    padding: 10px 8px 18px 8px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-photos-carousel > * {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+  .login-card-container {
+    padding: 28px 16px 24px 16px !important;
+    border-radius: 20px !important;
+  }
+
   .date-picker-overlay {
     padding: 12px 8px !important;
     border-radius: 16px !important;
@@ -98,8 +109,10 @@ html, body, #root {
     padding: 7px 0 !important;
     font-size: 0.82rem !important;
   }
+}
 
-  .polaroid-card-wrapper {
-    width: 140px !important;
+@media (min-width: 769px) {
+  .mobile-photos-carousel {
+    display: none !important;
   }
 }

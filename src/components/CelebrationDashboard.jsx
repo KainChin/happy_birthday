@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { CelebrationHeader } from './CelebrationHeader';
 import { CelebrationLetter } from './CelebrationLetter';
-import { PolaroidGalleryLeft, PolaroidGalleryRight } from './PolaroidGallery';
+import {
+  PolaroidGalleryLeft,
+  PolaroidGalleryRight,
+  MobilePhotoCarousel
+} from './PolaroidGallery';
 import { SecretGiftBox } from './SecretGiftBox';
 import { SecretGiftModal } from './SecretGiftModal';
 
 const dashboardLayoutGrid = {
   display: 'grid',
-  gridTemplateColumns: '1fr minmax(280px, 380px) 1fr',
+  gridTemplateColumns: '1fr minmax(280px, 390px) 1fr',
   gap: '24px',
   alignItems: 'center',
   width: '100%',
@@ -26,7 +30,7 @@ export const CelebrationDashboard = ({ name }) => {
         width: '100%',
         maxWidth: '1100px',
         margin: '0 auto',
-        padding: '16px 20px 40px 20px',
+        padding: '16px 16px 40px 16px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
@@ -42,6 +46,7 @@ export const CelebrationDashboard = ({ name }) => {
         <PolaroidGalleryLeft />
         <CelebrationLetter name={name} />
         <PolaroidGalleryRight />
+        <MobilePhotoCarousel />
       </div>
 
       <SecretGiftBox onOpenGift={() => setIsGiftOpen(true)} />
