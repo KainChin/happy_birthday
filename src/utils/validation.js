@@ -32,14 +32,18 @@ export const isDateValid = (dateStr) => {
 };
 
 export const validateInputs = (name, date) => {
-  if (!name || !name.trim()) return ERRORS.NAME_REQUIRED;
-  if (!date || !date.trim()) return ERRORS.DATE_REQUIRED;
-
   const validName = isNameValid(name);
   const validDate = isDateValid(date);
 
-  if (!validName || !validDate) {
-    return ERRORS.AUTH_FAILED;
+  if (!validName && !validDate) {
+    return ERRORS.AUTH_BOTH_FAILED;
   }
+  if (!validName) {
+    return ERRORS.AUTH_NAME_FAILED;
+  }
+  if (!validDate) {
+    return ERRORS.AUTH_DATE_FAILED;
+  }
+
   return '';
 };

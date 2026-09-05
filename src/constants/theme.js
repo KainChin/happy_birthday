@@ -1,20 +1,19 @@
 export const TEXTS = {
-  SUBTITLE: 'WELCOME TO HER',
-  TITLE: 'BIRTHDAY',
-  SCRIPT_TITLE: 'Celebration',
-  DESCRIPTION_LINE1: 'A special day for a truly amazing woman.',
-  DESCRIPTION_LINE2: 'Enter the details to unlock the celebration.',
+  SUBTITLE: 'CHÀO MỪNG ĐẾN VỚI',
+  TITLE: 'SINH NHẬT',
+  SCRIPT_TITLE: 'Ngày Kỷ Niệm',
+  DESCRIPTION_LINE1: 'Một ngày đặc biệt dành cho cô gái tuyệt vời nhất.',
+  DESCRIPTION_LINE2: 'Nhập thông tin để mở khóa món quà bí mật.',
   INPUT_NAME_LABEL: 'Bạn điền tên bạn dô ik',
-  INPUT_DATE_LABEL: 'Birth Date (DD/MM/YYYY)',
-  BUTTON_UNLOCK: 'UNLOCK THE CELEBRATION',
-  BUTTON_UNLOCKING: 'UNLOCKING...',
-  SUCCESS_TITLE: 'Celebration Unlocked!',
-  SUCCESS_MSG: 'Welcome to her special day'
+  INPUT_DATE_LABEL: 'Ngày sinh (DD/MM/YYYY)',
+  BUTTON_UNLOCK: 'MỞ KHÓA MÓN QUÀ',
+  BUTTON_UNLOCKING: 'ĐANG MỞ KHÓA...',
+  SUCCESS_TITLE: 'Món Quà Đã Mở Khóa!',
+  SUCCESS_MSG: 'Chúc mừng sinh nhật cô gái tuyệt vời'
 };
 
 export const ERRORS = {
-  NAME_REQUIRED: 'Vui lòng nhập họ và tên của cô ấy',
-  DATE_REQUIRED: 'Vui lòng nhập ngày sinh (DD/MM/YYYY)',
-  DATE_FORMAT_INVALID: 'Vui lòng nhập định dạng DD/MM/YYYY (ví dụ: 09/09/2004)',
-  AUTH_FAILED: 'Chết rồi bạn hong nhớ sinh nhật mình sao 😊'
+  AUTH_NAME_FAILED: 'Ơ kìa sai tên rồi 😔',
+  AUTH_DATE_FAILED: 'Ơ kìa bạn quên ngày sinh của mình à 😔',
+  AUTH_BOTH_FAILED: 'Chết ròi, sai cả tên và ngày sinh lun kè 😢'
 };

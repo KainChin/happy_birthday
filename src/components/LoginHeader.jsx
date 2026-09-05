@@ -32,15 +32,15 @@ const crownSvgStyle = {
 const subtitleStyle = {
   fontFamily: 'var(--font-serif)',
   fontSize: '0.78rem',
-  letterSpacing: '0.28em',
-  color: 'rgba(245, 225, 200, 0.78)',
+  letterSpacing: '0.24em',
+  color: 'rgba(245, 225, 200, 0.82)',
   textTransform: 'uppercase',
   marginBottom: '4px'
 };
 
 const mainTitleStyle = {
   fontFamily: 'var(--font-serif)',
-  fontSize: 'clamp(2rem, 5vw, 2.6rem)',
+  fontSize: 'clamp(2rem, 5.5vw, 2.6rem)',
   fontWeight: 700,
   letterSpacing: '0.12em',
   color: 'var(--color-cream)',
@@ -51,9 +51,9 @@ const mainTitleStyle = {
 
 const scriptTitleStyle = {
   fontFamily: 'var(--font-script)',
-  fontSize: 'clamp(2.4rem, 6vw, 3.2rem)',
+  fontSize: 'clamp(2.3rem, 6vw, 3.2rem)',
   color: 'var(--color-dusty-pink)',
-  marginTop: '-12px',
+  marginTop: '-8px',
   marginBottom: '10px',
   fontWeight: 400,
   textShadow: '0 2px 12px rgba(217, 146, 165, 0.25)'
@@ -69,9 +69,9 @@ const heartDividerStyle = {
 
 const descStyle = {
   fontFamily: 'var(--font-sans)',
-  fontSize: '0.82rem',
+  fontSize: '0.84rem',
   fontWeight: 300,
-  color: 'rgba(245, 235, 225, 0.75)',
+  color: 'rgba(245, 235, 225, 0.8)',
   lineHeight: 1.55,
   maxWidth: '320px'
 };
