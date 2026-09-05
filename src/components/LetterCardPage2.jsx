@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronLeft, Heart } from 'lucide-react';
+import { formatCapitalizedName } from '../utils/validation';
 
 const letterPaperStyle = {
   position: 'relative',
@@ -56,7 +57,7 @@ const poemStyle = {
 };
 
 export const LetterCardPage2 = ({ name, onPrev }) => {
-  const displayName = name || 'Đồng Khánh Phương';
+  const displayName = formatCapitalizedName(name);
 
   return (
     <div style={letterPaperStyle}>
@@ -73,20 +74,20 @@ export const LetterCardPage2 = ({ name, onPrev }) => {
       <div style={poemStyle}>
         <p style={{ marginBottom: '12px' }}>
           Tháng Chín về mang nắng thu dịu nhẹ,<br />
-          Gió khẽ vờn qua suối tóc em mây.<br />
+          Gió khẽ vờn qua suối tóc mây bay.<br />
           Chúc Khánh Phương tuổi mới thêm rạng rỡ,<br />
           Nụ cười hiền làm đắm say lòng ai.
         </p>
 
         <p style={{ marginBottom: '12px' }}>
           Chưa phải người yêu, chỉ là người thương nhớ,<br />
-          Thầm lặng đi bên em những chặng đường.<br />
-          Mong đời em luôn êm đềm như nước,<br />
-          Bình an về gói trọn những yêu thương.
+          Thầm lặng cùng bạn đi qua tháng năm.<br />
+          Mong đường đời luôn êm đềm như nước,<br />
+          Bình an về gói trọn những thương yêu.
         </p>
 
         <p>
-          Mong mỗi ngày em gặp nhiều may mắn,<br />
+          Mong mỗi ngày bạn gặp nhiều may mắn,<br />
           Áo dài thơ, nón lá nghiêng nụ cười.<br />
           Giữ trong tim niềm vui ngàn sắc thắm,<br />
           Đón tuổi mới rực rỡ nhất trần đời!

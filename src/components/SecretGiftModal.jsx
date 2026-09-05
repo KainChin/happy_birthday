@@ -1,5 +1,6 @@
 import React from 'react';
-import { Gift, Sparkles, Heart, X } from 'lucide-react';
+import { Gift, Sparkles, X } from 'lucide-react';
+import { formatCapitalizedName } from '../utils/validation';
 
 const modalBackdropStyle = {
   position: 'fixed',
@@ -47,7 +48,7 @@ const closeBtnStyle = {
 };
 
 export const SecretGiftModal = ({ onClose, name }) => {
-  const displayName = name || 'Đồng Khánh Phương';
+  const displayName = formatCapitalizedName(name);
 
   return (
     <div style={modalBackdropStyle}>
@@ -82,7 +83,7 @@ export const SecretGiftModal = ({ onClose, name }) => {
         </div>
 
         <p style={{ fontSize: '0.9rem', lineHeight: 1.6, color: 'rgba(245, 235, 225, 0.85)', marginBottom: '20px' }}>
-          "Chúc em một tuổi mới luôn tỏa sáng như những ngôi sao, gặp nhiều may mắn, ngập tràn nụ cười và luôn được yêu thương dịu dàng nhất!" 🌹✨
+          "Chúc bạn một tuổi mới luôn tỏa sáng như những ngôi sao, gặp nhiều may mắn, ngập tràn nụ cười và luôn hạnh phúc rực rỡ nhất!" 🌹✨
         </p>
 
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', background: 'linear-gradient(135deg, #521c2e, #36121d)', border: '1px solid var(--color-gold-light)', borderRadius: '20px', fontSize: '0.88rem' }}>

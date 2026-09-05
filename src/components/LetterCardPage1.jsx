@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { formatCapitalizedName } from '../utils/validation';
 
 const letterPaperStyle = {
   position: 'relative',
@@ -49,7 +50,7 @@ const nextBtnStyle = {
 };
 
 export const LetterCardPage1 = ({ name, onNext }) => {
-  const displayName = name || 'Đồng Khánh Phương';
+  const displayName = formatCapitalizedName(name);
 
   return (
     <div style={letterPaperStyle}>
@@ -60,12 +61,12 @@ export const LetterCardPage1 = ({ name, onNext }) => {
       <div style={{ fontFamily: 'var(--font-script)', fontSize: '1.3rem', lineHeight: 1.55, color: '#361520' }}>
         <p style={{ fontWeight: 600, marginBottom: '10px' }}>Gửi [{displayName}],</p>
         <p style={{ marginBottom: '8px' }}>
-          Chúc mừng sinh nhật cô gái đặc biệt nhất trong lòng ai đó.
+          Chúc mừng sinh nhật người bạn đặc biệt nhất của tôi.
         </p>
         <p style={{ marginBottom: '8px' }}>
-          Hôm nay là một ngày thật đẹp để gửi đến em những tình cảm chân thành và ngọt ngào nhất.
+          Hôm nay là một ngày thật đẹp để gửi đến bạn những tình cảm chân thành và ấm áp nhất.
         </p>
-        <p>Tôi có viết tặng em một bài thơ nhỏ, hãy lật lá thư này để đọc nhé...</p>
+        <p>Tôi có viết tặng bạn một bài thơ nhỏ, hãy lật lá thư này để đọc nhé...</p>
       </div>
 
       <button style={nextBtnStyle} onClick={onNext}>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, Mail, Lock } from 'lucide-react';
+import { formatCapitalizedName } from '../utils/validation';
 
 const headerNavStyle = {
   display: 'flex',
@@ -48,7 +49,7 @@ const highlightNameStyle = {
 };
 
 export const CelebrationHeader = ({ activeTab, setActiveTab, name }) => {
-  const displayName = name || 'Đồng Khánh Phương';
+  const displayName = formatCapitalizedName(name);
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -80,7 +81,7 @@ export const CelebrationHeader = ({ activeTab, setActiveTab, name }) => {
 
       <div style={titleWrapperStyle}>
         <h1 style={titleStyle}>
-          Happy Birthday, <span style={highlightNameStyle}>[{displayName}]</span>!
+          Happy Birthday, <span style={highlightNameStyle}>{displayName}</span>!
         </h1>
       </div>
     </div>

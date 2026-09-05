@@ -11,6 +11,20 @@ export const normalizeText = (text) => {
     .replace(/\s+/g, ' ');
 };
 
+export const formatCapitalizedName = (name) => {
+  if (!name || !name.trim()) return 'Đồng Khánh Phương';
+  return name
+    .trim()
+    .split(/\s+/)
+    .map((w) => {
+      if (w.toLowerCase() === 'đồng' || w.toLowerCase() === 'dong') return 'Đồng';
+      if (w.toLowerCase() === 'khánh' || w.toLowerCase() === 'khanh') return 'Khánh';
+      if (w.toLowerCase() === 'phương' || w.toLowerCase() === 'phuong') return 'Phương';
+      return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+    })
+    .join(' ');
+};
+
 export const isNameValid = (name) => {
   const normalized = normalizeText(name);
   return normalized === 'dong khanh phuong';
@@ -35,7 +49,6 @@ export const validateInputs = (name, date) => {
   const hasName = Boolean(name && name.trim());
   const hasDate = Boolean(date && date.trim());
 
-  // Check if both fields are empty
   if (!hasName && !hasDate) {
     return ERRORS.AUTH_EMPTY;
   }
