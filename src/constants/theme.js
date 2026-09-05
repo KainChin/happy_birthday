@@ -13,6 +13,7 @@ export const TEXTS = {
 };
 
 export const ERRORS = {
+  AUTH_EMPTY: 'Ơ kìa bạn chưa nhập gì mà đã dô ròi 😄',
   AUTH_NAME_FAILED: 'Ơ kìa sai tên rồi 😔',
   AUTH_DATE_FAILED: 'Ơ kìa bạn quên ngày sinh của mình à 😔',
   AUTH_BOTH_FAILED: 'Chết ròi, sai cả tên và ngày sinh lun kè 😢'

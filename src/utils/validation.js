@@ -32,6 +32,14 @@ export const isDateValid = (dateStr) => {
 };
 
 export const validateInputs = (name, date) => {
+  const hasName = Boolean(name && name.trim());
+  const hasDate = Boolean(date && date.trim());
+
+  // Check if both fields are empty
+  if (!hasName && !hasDate) {
+    return ERRORS.AUTH_EMPTY;
+  }
+
   const validName = isNameValid(name);
   const validDate = isDateValid(date);
 
