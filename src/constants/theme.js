@@ -4,7 +4,7 @@ export const TEXTS = {
   SCRIPT_TITLE: 'Celebration',
   DESCRIPTION_LINE1: 'A special day for a truly amazing woman.',
   DESCRIPTION_LINE2: 'Enter the details to unlock the celebration.',
-  INPUT_NAME_LABEL: 'Her Full Name',
+  INPUT_NAME_LABEL: 'Bạn điền tên bạn dô ik',
   INPUT_DATE_LABEL: 'Birth Date (DD/MM/YYYY)',
   BUTTON_UNLOCK: 'UNLOCK THE CELEBRATION',
   BUTTON_UNLOCKING: 'UNLOCKING...',
