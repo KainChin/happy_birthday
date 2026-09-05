@@ -55,7 +55,14 @@ html, body, #root {
   animation: spin 0.8s linear infinite;
 }
 
-/* Mobile responsive fine-tuning */
+/* Responsive Grid for Dashboard */
+@media (max-width: 860px) {
+  .celebration-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
 @media (max-width: 480px) {
   .login-card-container {
     padding: 30px 18px 26px 18px !important;
