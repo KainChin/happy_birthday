@@ -3,38 +3,27 @@ import React, { useEffect, useRef } from 'react';
 const EMOJIS = ['🌹', '🌹', '🌸', '🥀', '❤️', '💖', '✨', '💕', '🌹', '🌺'];
 const COLORS = ['#e60039', '#b3002d', '#FFD700', '#d992a5', '#ff4d6d', '#800020'];
 
-export const RoseHeartConfetti = () => {
+export const RoseHeartConfetti = ({ triggerCount = 0 }) => {
   const canvasRef = useRef(null);
+  const particlesRef = useRef([]);
+  const animFrameRef = useRef(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let animationFrameId;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+  const addBurst = () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const count = width < 768 ? 95 : 150;
+    const now = Date.now();
 
-    const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener('resize', handleResize);
-
-    const particles = [];
-    const particleCount = width < 768 ? 90 : 140;
-    const startTime = Date.now();
-    const duration = 6000;
-
-    for (let i = 0; i < particleCount; i++) {
-      const isEmoji = Math.random() < 0.72;
+    for (let i = 0; i < count; i++) {
+      const isEmoji = Math.random() < 0.75;
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * (width < 768 ? 14 : 20) + 4;
-      particles.push({
+      const speed = Math.random() * (width < 768 ? 16 : 22) + 5;
+      particlesRef.current.push({
         x: width / 2,
-        y: height * 0.5,
+        y: height * 0.65,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed - 6,
-        gravity: 0.15 + Math.random() * 0.1,
+        gravity: 0.16 + Math.random() * 0.1,
         sway: Math.random() * 0.06 + 0.02,
         swayPhase: Math.random() * Math.PI * 2,
         size: isEmoji ? (Math.random() * 16 + 20) : (Math.random() * 8 + 6),
@@ -42,26 +31,49 @@ export const RoseHeartConfetti = () => {
         rotSpeed: (Math.random() - 0.5) * 0.15,
         isEmoji,
         emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
-        color: COLORS[Math.floor(Math.random() * COLORS.length)]
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        createdAt: now,
+        duration: 5500
       });
     }
+  };
+
+  useEffect(() => {
+    addBurst();
+  }, [triggerCount]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', handleResize);
 
     const render = () => {
-      const elapsed = Date.now() - startTime;
+      const width = canvas.width;
+      const height = canvas.height;
       ctx.clearRect(0, 0, width, height);
+      const now = Date.now();
 
-      if (elapsed > duration) return;
+      particlesRef.current = particlesRef.current.filter((p) => now - p.createdAt < p.duration);
 
-      let fadeAlpha = 1;
-      if (elapsed > 4200) {
-        fadeAlpha = Math.max(0, 1 - (elapsed - 4200) / 1800);
-      }
+      particlesRef.current.forEach((p) => {
+        const elapsed = now - p.createdAt;
+        let fadeAlpha = 1;
+        if (elapsed > 3800) {
+          fadeAlpha = Math.max(0, 1 - (elapsed - 3800) / 1700);
+        }
 
-      particles.forEach((p) => {
         p.x += p.vx + Math.sin(p.swayPhase) * 1.8;
         p.y += p.vy;
         p.vy += p.gravity;
-        p.vx *= 0.97;
+        p.vx *= 0.975;
         p.swayPhase += p.sway;
         p.rotation += p.rotSpeed;
 
@@ -84,14 +96,14 @@ export const RoseHeartConfetti = () => {
         ctx.restore();
       });
 
-      animationFrameId = requestAnimationFrame(render);
+      animFrameRef.current = requestAnimationFrame(render);
     };
 
     render();
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
   }, []);
 

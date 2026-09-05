@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Gift, Sparkles, X } from 'lucide-react';
 import { formatCapitalizedName } from '../utils/validation';
 import { RoseHeartConfetti } from './RoseHeartConfetti';
@@ -50,10 +50,15 @@ const closeBtnStyle = {
 
 export const SecretGiftModal = ({ onClose, name }) => {
   const displayName = formatCapitalizedName(name);
+  const [triggerCount, setTriggerCount] = useState(0);
+
+  const handleCelebrateClick = () => {
+    setTriggerCount((prev) => prev + 1);
+  };
 
   return (
     <div style={modalBackdropStyle}>
-      <RoseHeartConfetti />
+      <RoseHeartConfetti triggerCount={triggerCount} />
       <div style={modalBoxStyle}>
         <button style={closeBtnStyle} onClick={onClose}>
           <X size={18} />
@@ -88,10 +93,31 @@ export const SecretGiftModal = ({ onClose, name }) => {
           "Chúc bạn một tuổi mới luôn tỏa sáng như những ngôi sao, gặp nhiều may mắn, ngập tràn nụ cười và luôn hạnh phúc rực rỡ nhất!" 🌹✨
         </p>
 
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', background: 'linear-gradient(135deg, #521c2e, #36121d)', border: '1px solid var(--color-gold-light)', borderRadius: '20px', fontSize: '0.88rem' }}>
-          <Sparkles size={16} color="var(--color-gold-light)" />
+        <button
+          onClick={handleCelebrateClick}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            padding: '12px 24px',
+            background: 'linear-gradient(135deg, #70203a, #36121d)',
+            border: '1.5px solid var(--color-gold-light)',
+            borderRadius: '24px',
+            fontSize: '0.9rem',
+            color: 'var(--color-cream)',
+            cursor: 'pointer',
+            boxShadow: '0 6px 20px rgba(212, 175, 55, 0.35)',
+            transition: 'all 0.25s ease',
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 600
+          }}
+          onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.94)'; }}
+          onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+        >
+          <Sparkles size={18} color="var(--color-gold-light)" />
           <span>Happy Birthday {displayName}</span>
-        </div>
+        </button>
       </div>
     </div>
   );
