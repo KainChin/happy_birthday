@@ -1,4 +1,5 @@
 import React from 'react';
+import { MusicPlayer } from './MusicPlayer';
 
 const backgroundStyle = {
   position: 'fixed',
@@ -32,6 +33,7 @@ const overlayStyle = {
 export const BackgroundLayer = ({ children }) => {
   return (
     <div style={backgroundStyle}>
+      <MusicPlayer />
       <div style={overlayStyle} />
       <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
         {children}
