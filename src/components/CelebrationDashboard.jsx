@@ -11,12 +11,13 @@ import { SecretGiftModal } from './SecretGiftModal';
 
 const dashboardLayoutGrid = {
   display: 'grid',
-  gridTemplateColumns: '1fr minmax(280px, 390px) 1fr',
-  gap: '24px',
+  gridTemplateColumns: '1fr minmax(280px, 370px) 1fr',
+  gap: '20px',
   alignItems: 'center',
   width: '100%',
-  maxWidth: '1000px',
-  margin: '0 auto'
+  maxWidth: '1050px',
+  margin: '0 auto',
+  flex: 1
 };
 
 export const CelebrationDashboard = ({ name }) => {
@@ -25,15 +26,11 @@ export const CelebrationDashboard = ({ name }) => {
 
   return (
     <div
-      className="animate-fade-in"
+      className="celebration-dashboard-viewport animate-fade-in"
       style={{
         width: '100%',
         maxWidth: '1100px',
-        margin: '0 auto',
-        padding: '16px 16px 40px 16px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
+        margin: '0 auto'
       }}
     >
       <CelebrationHeader
