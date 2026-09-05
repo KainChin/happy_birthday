@@ -103,11 +103,16 @@ html, body, #root {
     height: auto !important;
     overflow-y: auto !important;
     padding: 22px 12px 30px 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
   .celebration-dashboard-grid {
     display: flex !important;
     flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
     gap: 16px !important;
     width: 100% !important;
   }

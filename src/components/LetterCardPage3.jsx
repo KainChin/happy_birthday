@@ -51,12 +51,6 @@ export const LetterCardPage3 = ({ name, onPrev, onReset }) => {
     <div style={letterPaperStyle}>
       <PaperclipIcon />
 
-      <div style={{ textAlign: 'center', marginBottom: '10px' }}>
-        <span style={{ fontFamily: 'var(--font-serif)', fontSize: '0.85rem', color: '#611e32', fontWeight: 600 }}>
-          THƠ TẶNG {displayName.toUpperCase()} (TRANG 3)
-        </span>
-      </div>
-
       <div style={poemStyle}>
         <p style={{ marginBottom: '12px' }}>
           Mong mỗi ngày bạn gặp nhiều may mắn,<br />

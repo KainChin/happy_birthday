@@ -6,7 +6,7 @@ import { LetterCardPage3 } from './LetterCardPage3';
 const letterWrapperStyle = {
   position: 'relative',
   width: '100%',
-  maxWidth: '390px',
+  maxWidth: '380px',
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
@@ -15,15 +15,15 @@ const letterWrapperStyle = {
 
 const envelopeBackStyle = {
   position: 'absolute',
-  top: '-12px',
-  left: '-16px',
-  right: '16px',
-  bottom: '12px',
+  top: '-6px',
+  left: '0px',
+  right: '0px',
+  bottom: '6px',
   backgroundColor: '#f2e8d8',
   borderRadius: '16px',
   border: '1px solid rgba(212, 175, 55, 0.3)',
   boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)',
-  transform: 'rotate(-4deg)',
+  transform: 'rotate(-2deg)',
   zIndex: 1
 };
 
