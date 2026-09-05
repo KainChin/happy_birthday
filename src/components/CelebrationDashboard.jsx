@@ -33,11 +33,7 @@ export const CelebrationDashboard = ({ name }) => {
         margin: '0 auto'
       }}
     >
-      <CelebrationHeader
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        name={name}
-      />
+      <CelebrationHeader name={name} />
 
       <div className="celebration-dashboard-grid" style={dashboardLayoutGrid}>
         <PolaroidGalleryLeft />

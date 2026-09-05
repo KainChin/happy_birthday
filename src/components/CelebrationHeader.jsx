@@ -1,32 +1,9 @@
 import React from 'react';
-import { Calendar, Mail, Lock } from 'lucide-react';
 import { formatCapitalizedName } from '../utils/validation';
-
-const headerNavStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: '28px',
-  paddingTop: '6px',
-  paddingBottom: '6px',
-  width: '100%'
-};
-
-const navItemStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '6px',
-  color: 'var(--color-gold-light)',
-  cursor: 'pointer',
-  fontSize: '0.78rem',
-  fontFamily: 'var(--font-sans)',
-  opacity: 0.85,
-  transition: 'all 0.3s ease'
-};
 
 const titleWrapperStyle = {
   textAlign: 'center',
-  margin: '4px 0 10px 0'
+  margin: '8px 0 14px 0'
 };
 
 const titleStyle = {
@@ -47,37 +24,11 @@ const highlightNameStyle = {
   textShadow: '0 0 18px rgba(229, 193, 88, 0.5)'
 };
 
-export const CelebrationHeader = ({ activeTab, setActiveTab, name }) => {
+export const CelebrationHeader = ({ name }) => {
   const displayName = formatCapitalizedName(name);
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <nav style={headerNavStyle}>
-        <div
-          onClick={() => setActiveTab('memories')}
-          style={{ ...navItemStyle, opacity: activeTab === 'memories' ? 1 : 0.7 }}
-        >
-          <Calendar size={16} color="var(--color-gold-light)" />
-          <span>Kỷ Niệm</span>
-        </div>
-
-        <div
-          onClick={() => setActiveTab('letter')}
-          style={{ ...navItemStyle, opacity: activeTab === 'letter' ? 1 : 0.7 }}
-        >
-          <Mail size={16} color="var(--color-gold-light)" />
-          <span>Lá Thư</span>
-        </div>
-
-        <div
-          onClick={() => setActiveTab('secret')}
-          style={{ ...navItemStyle, opacity: activeTab === 'secret' ? 1 : 0.7 }}
-        >
-          <Lock size={16} color="var(--color-gold-light)" />
-          <span>Bí Mật</span>
-        </div>
-      </nav>
-
       <div style={titleWrapperStyle}>
         <h1 style={titleStyle}>
           Happy Birthday, <span style={highlightNameStyle}>{displayName}</span>!

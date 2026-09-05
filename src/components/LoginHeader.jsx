@@ -96,17 +96,6 @@ export const LoginHeader = () => {
       <span style={subtitleStyle}>{TEXTS.SUBTITLE}</span>
       <h1 style={mainTitleStyle}>{TEXTS.TITLE}</h1>
       <div style={scriptTitleStyle}>{TEXTS.SCRIPT_TITLE}</div>
-
-      <div style={heartDividerStyle}>
-        <div style={{ ...lineStyle, width: '20px' }} />
-        <span style={{ color: 'var(--color-gold-light)', fontSize: '10px' }}>♥</span>
-        <div style={{ ...lineStyle, width: '20px' }} />
-      </div>
-
-      <div style={descStyle}>
-        <p>{TEXTS.DESCRIPTION_LINE1}</p>
-        <p>{TEXTS.DESCRIPTION_LINE2}</p>
-      </div>
     </div>
   );
 };
