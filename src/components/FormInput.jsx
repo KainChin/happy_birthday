@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { DatePickerModal } from './DatePickerModal';
 
 const containerStyle = {
   display: 'flex',
   flexDirection: 'column',
   marginBottom: '16px',
-  width: '100%'
+  width: '100%',
+  position: 'relative'
 };
 
 const inputWrapperStyle = {
@@ -14,13 +16,17 @@ const inputWrapperStyle = {
   width: '100%'
 };
 
-const iconStyle = {
+const iconBtnStyle = {
   position: 'absolute',
   left: '16px',
-  width: '18px',
-  height: '18px',
+  background: 'none',
+  border: 'none',
+  padding: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   color: 'rgba(235, 210, 185, 0.65)',
-  pointerEvents: 'none',
+  cursor: 'pointer',
   transition: 'color 0.3s ease'
 };
 
@@ -54,39 +60,56 @@ export const FormInput = ({
   value,
   onChange,
   error,
-  id
+  id,
+  isDatePicker = false,
+  onSelectDate
 }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const [showPicker, setShowPicker] = useState(false);
 
   const dynamicInputStyle = {
     ...baseInputStyle,
     borderColor: error
       ? 'rgba(240, 149, 149, 0.65)'
-      : isFocused
+      : isFocused || showPicker
       ? 'rgba(229, 193, 88, 0.75)'
       : 'var(--color-input-border)',
     boxShadow: error
       ? '0 0 12px rgba(240, 149, 149, 0.15)'
-      : isFocused
+      : isFocused || showPicker
       ? '0 0 16px rgba(212, 175, 55, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.1)'
       : 'none',
-    backgroundColor: isFocused
+    backgroundColor: isFocused || showPicker
       ? 'rgba(255, 255, 255, 0.07)'
       : 'var(--color-input-bg)'
+  };
+
+  const handleIconClick = () => {
+    if (isDatePicker) {
+      setShowPicker((prev) => !prev);
+    }
   };
 
   return (
     <div style={containerStyle}>
       <div style={inputWrapperStyle}>
         {Icon && (
-          <Icon
-            style={{
-              ...iconStyle,
-              color: isFocused
-                ? 'var(--color-gold-light)'
-                : 'rgba(235, 210, 185, 0.65)'
-            }}
-          />
+          <button
+            type="button"
+            onClick={handleIconClick}
+            style={iconBtnStyle}
+            tabIndex={-1}
+          >
+            <Icon
+              style={{
+                width: '18px',
+                height: '18px',
+                color: isFocused || showPicker
+                  ? 'var(--color-gold-light)'
+                  : 'rgba(235, 210, 185, 0.65)'
+              }}
+            />
+          </button>
         )}
         <input
           id={id}
@@ -94,12 +117,27 @@ export const FormInput = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          onFocus={() => setIsFocused(true)}
+          onFocus={() => {
+            setIsFocused(true);
+            if (isDatePicker) setShowPicker(true);
+          }}
           onBlur={() => setIsFocused(false)}
           style={dynamicInputStyle}
           autoComplete="off"
         />
       </div>
+
+      {isDatePicker && showPicker && (
+        <DatePickerModal
+          selectedDate={value}
+          onSelectDate={(dateStr) => {
+            if (onSelectDate) onSelectDate(dateStr);
+            setShowPicker(false);
+          }}
+          onClose={() => setShowPicker(false)}
+        />
+      )}
+
       {error && <span style={errorTextStyle}>{error}</span>}
     </div>
   );

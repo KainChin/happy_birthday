@@ -62,6 +62,10 @@ export const LoginForm = () => {
         placeholder={TEXTS.INPUT_DATE_LABEL}
         value={birthDate}
         onChange={handleDateChange}
+        isDatePicker={true}
+        onSelectDate={(dateStr) => {
+          handleDateChange({ target: { value: dateStr } });
+        }}
       />
       <UnlockButton isLoading={isLoading} />
     </form>
