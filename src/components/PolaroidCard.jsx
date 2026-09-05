@@ -35,6 +35,7 @@ const captionStyle = {
 export const PolaroidCard = ({ imageSrc, caption, rotate = '0deg' }) => {
   return (
     <div
+      className="polaroid-card-wrapper"
       style={{ ...cardStyle, transform: `rotate(${rotate})` }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = `rotate(0deg) scale(1.08)`;

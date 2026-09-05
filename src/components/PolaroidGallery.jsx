@@ -1,16 +1,9 @@
 import React from 'react';
 import { PolaroidCard } from './PolaroidCard';
 
-const sideContainerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '22px',
-  alignItems: 'center'
-};
-
 export const PolaroidGalleryLeft = ({ photos }) => {
   return (
-    <div style={sideContainerStyle}>
+    <div className="polaroid-side-container">
       <PolaroidCard
         imageSrc={photos?.photo1 || 'photos/photo1.png'}
         caption="Em Đêm '22"
@@ -27,7 +20,7 @@ export const PolaroidGalleryLeft = ({ photos }) => {
 
 export const PolaroidGalleryRight = ({ photos }) => {
   return (
-    <div style={sideContainerStyle}>
+    <div className="polaroid-side-container">
       <PolaroidCard
         imageSrc={photos?.photo3 || 'photos/photo3.png'}
         caption="Sắc Đỏ Nhuốc Mại"
