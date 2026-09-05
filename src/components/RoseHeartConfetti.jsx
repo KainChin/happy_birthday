@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
-const EMOJIS = ['🌹', '🌸', '❤️', '💖', '✨', '💕', '🥀'];
-const COLORS = ['#FFD700', '#d992a5', '#9e2a4b', '#e5c158', '#ff4d6d'];
+const EMOJIS = ['🌹', '🌹', '🌸', '🥀', '❤️', '💖', '✨', '💕', '🌹', '🌺'];
+const COLORS = ['#e60039', '#b3002d', '#FFD700', '#d992a5', '#ff4d6d', '#800020'];
 
 export const RoseHeartConfetti = () => {
   const canvasRef = useRef(null);
@@ -21,23 +21,25 @@ export const RoseHeartConfetti = () => {
     window.addEventListener('resize', handleResize);
 
     const particles = [];
-    const particleCount = width < 768 ? 55 : 90;
+    const particleCount = width < 768 ? 90 : 140;
     const startTime = Date.now();
-    const duration = 5500;
+    const duration = 6000;
 
     for (let i = 0; i < particleCount; i++) {
-      const isEmoji = Math.random() < 0.7;
+      const isEmoji = Math.random() < 0.72;
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * (width < 768 ? 14 : 20) + 4;
       particles.push({
-        x: width / 2 + (Math.random() * 80 - 40),
-        y: height * 0.55,
-        vx: (Math.random() - 0.5) * (width < 768 ? 12 : 16),
-        vy: -(Math.random() * 12 + 9),
-        gravity: 0.18 + Math.random() * 0.12,
-        sway: Math.random() * 0.05 + 0.02,
+        x: width / 2,
+        y: height * 0.5,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 6,
+        gravity: 0.15 + Math.random() * 0.1,
+        sway: Math.random() * 0.06 + 0.02,
         swayPhase: Math.random() * Math.PI * 2,
-        size: isEmoji ? (Math.random() * 14 + 18) : (Math.random() * 6 + 4),
+        size: isEmoji ? (Math.random() * 16 + 20) : (Math.random() * 8 + 6),
         rotation: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.1,
+        rotSpeed: (Math.random() - 0.5) * 0.15,
         isEmoji,
         emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
         color: COLORS[Math.floor(Math.random() * COLORS.length)]
@@ -51,14 +53,15 @@ export const RoseHeartConfetti = () => {
       if (elapsed > duration) return;
 
       let fadeAlpha = 1;
-      if (elapsed > 4000) {
-        fadeAlpha = Math.max(0, 1 - (elapsed - 4000) / 1500);
+      if (elapsed > 4200) {
+        fadeAlpha = Math.max(0, 1 - (elapsed - 4200) / 1800);
       }
 
       particles.forEach((p) => {
-        p.x += p.vx + Math.sin(p.swayPhase) * 1.5;
+        p.x += p.vx + Math.sin(p.swayPhase) * 1.8;
         p.y += p.vy;
         p.vy += p.gravity;
+        p.vx *= 0.97;
         p.swayPhase += p.sway;
         p.rotation += p.rotSpeed;
 
@@ -75,7 +78,7 @@ export const RoseHeartConfetti = () => {
         } else {
           ctx.fillStyle = p.color;
           ctx.beginPath();
-          ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+          ctx.ellipse(0, 0, p.size, p.size * 0.6, Math.PI / 4, 0, Math.PI * 2);
           ctx.fill();
         }
         ctx.restore();

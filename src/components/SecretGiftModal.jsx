@@ -90,7 +90,7 @@ export const SecretGiftModal = ({ onClose, name }) => {
 
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 22px', background: 'linear-gradient(135deg, #521c2e, #36121d)', border: '1px solid var(--color-gold-light)', borderRadius: '20px', fontSize: '0.88rem' }}>
           <Sparkles size={16} color="var(--color-gold-light)" />
-          <span>Happy Birthday {displayName}!</span>
+          <span>Happy Birthday {displayName}</span>
         </div>
       </div>
     </div>
