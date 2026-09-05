@@ -4,21 +4,48 @@ export const MusicPlayer = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
+    const audio = audioRef.current;
+
     const startAudio = () => {
-      if (audioRef.current && audioRef.current.paused) {
-        audioRef.current.play().catch(() => {});
+      if (audio && audio.paused && !document.hidden) {
+        audio.play().catch(() => {});
       }
     };
 
-    // Attempt autoplay immediately on mount
+    const stopAudio = () => {
+      if (audio) {
+        audio.pause();
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopAudio();
+      } else {
+        startAudio();
+      }
+    };
+
+    // Attempt autoplay immediately on mount if page is visible
     startAudio();
 
     // Listen to user interactions to trigger audio if browser blocks initial autoplay
     const events = ['click', 'touchstart', 'pointerdown', 'keydown'];
-    events.forEach(event => window.addEventListener(event, startAudio, { once: true }));
+    events.forEach((event) => window.addEventListener(event, startAudio, { once: true }));
+
+    // Listen to tab hide / exit / app switch / webview close events
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('pagehide', stopAudio);
+    window.addEventListener('beforeunload', stopAudio);
+    window.addEventListener('blur', stopAudio);
 
     return () => {
-      events.forEach(event => window.removeEventListener(event, startAudio));
+      stopAudio();
+      events.forEach((event) => window.removeEventListener(event, startAudio));
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('pagehide', stopAudio);
+      window.removeEventListener('beforeunload', stopAudio);
+      window.removeEventListener('blur', stopAudio);
     };
   }, []);
 
