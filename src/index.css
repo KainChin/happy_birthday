@@ -45,6 +45,33 @@ html, body, #root {
   100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
 }
 
+/* Continuous Infinite Marquee Scroll */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.photo-marquee-container {
+  display: flex !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  padding: 8px 0 14px 0 !important;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.photo-marquee-track {
+  display: flex !important;
+  gap: 16px !important;
+  width: max-content !important;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.photo-marquee-container:hover .photo-marquee-track {
+  animation-play-state: paused;
+}
+
 .animate-fade-in { animation: fadeInCard 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-spin { animation: spin 0.8s linear infinite; }
 .animate-card-shuffle-in { animation: shuffleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
@@ -56,7 +83,7 @@ html, body, #root {
   align-items: center;
 }
 
-/* Desktop Viewport (1024px+) - Single Screen Fits All */
+/* Desktop Viewport (1024px+) */
 @media (min-width: 1024px) {
   .celebration-dashboard-viewport {
     height: 100vh !important;
@@ -69,7 +96,7 @@ html, body, #root {
   }
 }
 
-/* Mobile Stack & Horizontal Carousel (< 768px) */
+/* Mobile Stack & Marquee (< 768px) */
 @media (max-width: 768px) {
   .celebration-dashboard-viewport {
     min-height: 100vh !important;
@@ -87,20 +114,19 @@ html, body, #root {
 
   .desktop-only-gallery { display: none !important; }
 
-  .mobile-photos-carousel {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 14px !important;
-    width: 100% !important;
-    padding: 6px 4px 14px 4px !important;
-    -webkit-overflow-scrolling: touch;
+  .login-card-container {
+    padding: 28px 16px 24px 16px !important;
+    border-radius: 20px !important;
   }
 
-  .mobile-photos-carousel > * {
-    scroll-snap-align: center;
-    flex-shrink: 0;
+  .date-picker-overlay {
+    padding: 12px 8px !important;
+    border-radius: 16px !important;
   }
+
+  .date-picker-grid { gap: 3px !important; }
+  .date-picker-day-btn { padding: 7px 0 !important; font-size: 0.82rem !important; }
+  .polaroid-card-wrapper { width: 140px !important; }
 }
 
 @media (min-width: 769px) {
