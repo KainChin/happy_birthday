@@ -10,7 +10,7 @@ const letterPaperStyle = {
   backgroundColor: '#fbf7ee',
   color: '#2a141c',
   borderRadius: '16px',
-  padding: '36px 24px 24px 24px',
+  padding: '30px 16px 20px 16px',
   boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(212, 175, 55, 0.08)',
   border: '1.5px solid rgba(212, 175, 55, 0.35)',
   textAlign: 'left'
@@ -38,8 +38,8 @@ const btnStyle = {
 
 const poemStyle = {
   fontFamily: 'var(--font-script)',
-  fontSize: '1.22rem',
-  lineHeight: 1.55,
+  fontSize: 'clamp(0.88rem, 3.4vw, 1.14rem)',
+  lineHeight: 1.6,
   color: '#3d1624',
   fontStyle: 'italic'
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Gift, Sparkles, X } from 'lucide-react';
 import { formatCapitalizedName } from '../utils/validation';
+import { RoseHeartConfetti } from './RoseHeartConfetti';
 
 const modalBackdropStyle = {
   position: 'fixed',
@@ -52,6 +53,7 @@ export const SecretGiftModal = ({ onClose, name }) => {
 
   return (
     <div style={modalBackdropStyle}>
+      <RoseHeartConfetti />
       <div style={modalBoxStyle}>
         <button style={closeBtnStyle} onClick={onClose}>
           <X size={18} />

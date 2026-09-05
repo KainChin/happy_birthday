@@ -3,24 +3,28 @@ import { formatCapitalizedName } from '../utils/validation';
 
 const titleWrapperStyle = {
   textAlign: 'center',
-  margin: '8px 0 14px 0'
+  margin: '10px 0 16px 0',
+  paddingTop: '6px',
+  width: '100%'
 };
 
 const titleStyle = {
   fontFamily: 'var(--font-script)',
-  fontSize: 'clamp(1.6rem, 3.6vw, 2.4rem)',
+  fontSize: 'clamp(1.45rem, 4.2vw, 2.4rem)',
   color: 'var(--color-cream)',
   fontWeight: 400,
-  letterSpacing: '0.03em',
+  letterSpacing: '0.02em',
+  lineHeight: 1.25,
   textShadow: '0 0 16px rgba(229, 193, 88, 0.4), 0 2px 8px rgba(0,0,0,0.5)'
 };
 
 const highlightNameStyle = {
   fontFamily: 'var(--font-serif)',
-  fontSize: 'clamp(1.5rem, 3.2vw, 2.2rem)',
+  fontSize: 'clamp(1.35rem, 4vw, 2.2rem)',
   color: 'var(--color-gold-light)',
   fontWeight: 600,
-  marginLeft: '8px',
+  marginLeft: '6px',
+  display: 'inline-block',
   textShadow: '0 0 18px rgba(229, 193, 88, 0.5)'
 };
 

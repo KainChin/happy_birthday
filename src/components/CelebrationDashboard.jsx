@@ -4,7 +4,7 @@ import { CelebrationLetter } from './CelebrationLetter';
 import {
   PolaroidGalleryLeft,
   PolaroidGalleryRight,
-  MobilePhotoCarousel
+  ContinuousPhotoMarquee
 } from './PolaroidGallery';
 import { SecretGiftBox } from './SecretGiftBox';
 import { SecretGiftModal } from './SecretGiftModal';
@@ -21,7 +21,6 @@ const dashboardLayoutGrid = {
 };
 
 export const CelebrationDashboard = ({ name }) => {
-  const [activeTab, setActiveTab] = useState('letter');
   const [isGiftOpen, setIsGiftOpen] = useState(false);
 
   return (
@@ -39,8 +38,9 @@ export const CelebrationDashboard = ({ name }) => {
         <PolaroidGalleryLeft />
         <CelebrationLetter name={name} />
         <PolaroidGalleryRight />
-        <MobilePhotoCarousel />
       </div>
+
+      <ContinuousPhotoMarquee />
 
       <SecretGiftBox onOpenGift={() => setIsGiftOpen(true)} />
 

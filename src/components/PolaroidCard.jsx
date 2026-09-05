@@ -2,21 +2,22 @@ import React from 'react';
 
 const cardStyle = {
   backgroundColor: '#fcfaf5',
-  padding: '10px 10px 14px 10px',
-  borderRadius: '14px',
-  boxShadow: '0 12px 30px rgba(0, 0, 0, 0.48), 0 2px 6px rgba(0, 0, 0, 0.2)',
-  border: '1px solid rgba(212, 175, 55, 0.3)',
+  padding: '8px 8px 12px 8px',
+  borderRadius: '12px',
+  boxShadow: '0 10px 24px rgba(0, 0, 0, 0.45), 0 2px 5px rgba(0, 0, 0, 0.2)',
+  border: '1px solid rgba(212, 175, 55, 0.35)',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  width: '145px',
+  width: '140px',
   transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), boxShadow 0.35s ease',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  flexShrink: 0
 };
 
 const imgStyle = {
   width: '100%',
-  height: '145px',
+  height: '135px',
   borderRadius: '8px',
   objectFit: 'cover',
   objectPosition: 'center 20%',
@@ -25,11 +26,16 @@ const imgStyle = {
 
 const captionStyle = {
   fontFamily: 'var(--font-script)',
-  fontSize: '1.18rem',
+  fontSize: '1.02rem',
   color: '#3d1624',
-  marginTop: '8px',
+  marginTop: '6px',
   textAlign: 'center',
-  lineHeight: 1.2
+  lineHeight: 1.15,
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  maxWidth: '100%',
+  fontWeight: 600
 };
 
 export const PolaroidCard = ({ imageSrc, caption, rotate = '0deg' }) => {
@@ -38,18 +44,18 @@ export const PolaroidCard = ({ imageSrc, caption, rotate = '0deg' }) => {
       className="polaroid-card-wrapper"
       style={{ ...cardStyle, transform: `rotate(${rotate})` }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = `rotate(0deg) scale(1.08)`;
+        e.currentTarget.style.transform = `rotate(0deg) scale(1.06)`;
         e.currentTarget.style.zIndex = '10';
-        e.currentTarget.style.boxShadow = '0 18px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(229, 193, 88, 0.4)';
+        e.currentTarget.style.boxShadow = '0 16px 36px rgba(0, 0, 0, 0.6), 0 0 16px rgba(229, 193, 88, 0.4)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = `rotate(${rotate})`;
         e.currentTarget.style.zIndex = '1';
-        e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.48), 0 2px 6px rgba(0, 0, 0, 0.2)';
+        e.currentTarget.style.boxShadow = '0 10px 24px rgba(0, 0, 0, 0.45), 0 2px 5px rgba(0, 0, 0, 0.2)';
       }}
     >
       <img src={imageSrc} alt={caption} style={imgStyle} />
-      <span style={captionStyle}>{caption}</span>
+      <span style={captionStyle} title={caption}>{caption}</span>
     </div>
   );
 };

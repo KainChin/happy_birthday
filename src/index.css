@@ -102,20 +102,20 @@ html, body, #root {
     min-height: 100vh !important;
     height: auto !important;
     overflow-y: auto !important;
-    padding: 12px 14px 30px 14px !important;
+    padding: 22px 12px 30px 12px !important;
   }
 
   .celebration-dashboard-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 16px !important;
     width: 100% !important;
   }
 
   .desktop-only-gallery { display: none !important; }
 
   .login-card-container {
-    padding: 28px 16px 24px 16px !important;
+    padding: 24px 14px 20px 14px !important;
     border-radius: 20px !important;
   }
 
@@ -126,11 +126,7 @@ html, body, #root {
 
   .date-picker-grid { gap: 3px !important; }
   .date-picker-day-btn { padding: 7px 0 !important; font-size: 0.82rem !important; }
-  .polaroid-card-wrapper { width: 140px !important; }
-}
-
-@media (min-width: 769px) {
-  .mobile-photos-carousel { display: none !important; }
+  .polaroid-card-wrapper { width: 135px !important; }
 }
 
 @keyframes spin {
