@@ -1,0 +1,61 @@
+:root {
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Great Vibes', 'Alex Brush', cursive;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  --color-cream: #fdfbf7;
+  --color-beige: #f5ebe0;
+  --color-dusty-pink: #d992a5;
+  --color-plum-dark: #2d0d17;
+  --color-plum-mid: #4a1525;
+  --color-plum-light: #611e32;
+  --color-gold: #d4af37;
+  --color-gold-light: #e5c158;
+  --color-glass-bg: rgba(26, 16, 20, 0.62);
+  --color-glass-border: rgba(245, 225, 200, 0.18);
+  --color-input-bg: rgba(255, 255, 255, 0.04);
+  --color-input-border: rgba(225, 200, 180, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeInCard 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
