@@ -3,15 +3,15 @@ import React from 'react';
 const daysGridStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(7, 1fr)',
-  gap: '4px',
+  gap: '6px',
   textAlign: 'center'
 };
 
 const weekHeaderStyle = {
-  fontSize: '0.72rem',
-  color: 'rgba(245, 225, 200, 0.55)',
-  fontWeight: 600,
-  paddingBottom: '6px'
+  fontSize: '0.78rem',
+  color: 'var(--color-gold-light)',
+  fontWeight: 700,
+  paddingBottom: '8px'
 };
 
 export const DatePickerGrid = ({
@@ -41,18 +41,22 @@ export const DatePickerGrid = ({
             type="button"
             onClick={() => onDayClick(day)}
             style={{
-              padding: '8px 0',
-              border: isSelected ? '1px solid var(--color-gold-light)' : 'none',
-              borderRadius: '10px',
+              padding: '10px 0',
+              border: isSelected
+                ? '1.5px solid var(--color-gold-light)'
+                : '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '12px',
               background: isSelected
-                ? 'linear-gradient(135deg, #66233a, #38121d)'
-                : 'rgba(255, 255, 255, 0.03)',
-              color: isSelected ? 'var(--color-gold-light)' : 'var(--color-cream)',
-              fontSize: '0.82rem',
-              fontWeight: isSelected ? 700 : 400,
+                ? 'linear-gradient(135deg, #70263f, #3b131f)'
+                : 'rgba(255, 255, 255, 0.07)',
+              color: isSelected ? 'var(--color-gold-light)' : '#ffffff',
+              fontSize: '0.9rem',
+              fontWeight: isSelected ? 700 : 500,
               cursor: 'pointer',
               transition: 'all 0.2s ease',
-              boxShadow: isSelected ? '0 0 12px rgba(212, 175, 55, 0.3)' : 'none'
+              boxShadow: isSelected
+                ? '0 0 16px rgba(229, 193, 88, 0.5)'
+                : 'none'
             }}
           >
             {day}
