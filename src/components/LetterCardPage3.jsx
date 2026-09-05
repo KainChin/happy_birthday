@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, RotateCcw, Heart } from 'lucide-react';
 import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
@@ -38,13 +38,13 @@ const btnStyle = {
 
 const poemStyle = {
   fontFamily: 'var(--font-script)',
-  fontSize: '1.22rem',
+  fontSize: '1.2rem',
   lineHeight: 1.55,
   color: '#3d1624',
   fontStyle: 'italic'
 };
 
-export const LetterCardPage2 = ({ name, onPrev, onNext }) => {
+export const LetterCardPage3 = ({ name, onPrev, onReset }) => {
   const displayName = formatCapitalizedName(name);
 
   return (
@@ -53,23 +53,20 @@ export const LetterCardPage2 = ({ name, onPrev, onNext }) => {
 
       <div style={{ textAlign: 'center', marginBottom: '10px' }}>
         <span style={{ fontFamily: 'var(--font-serif)', fontSize: '0.85rem', color: '#611e32', fontWeight: 600 }}>
-          THƠ TẶNG {displayName.toUpperCase()} (TRANG 2)
+          THƠ TẶNG {displayName.toUpperCase()} (TRANG 3)
         </span>
       </div>
 
       <div style={poemStyle}>
-        <p style={{ marginBottom: '10px' }}>
-          Tháng Chín về mang nắng thu dịu nhẹ,<br />
-          Gió khẽ vờn qua suối tóc mây bay.<br />
-          Chúc Khánh Phương tuổi mới thêm rạng rỡ,<br />
-          Nụ cười hiền làm đắm say lòng ai.
+        <p style={{ marginBottom: '12px' }}>
+          Mong mỗi ngày bạn gặp nhiều may mắn,<br />
+          Áo dài thơ, nón lá nghiêng nụ cười.<br />
+          Giữ trong tim niềm vui ngàn sắc thắm,<br />
+          Đón tuổi mới rực rỡ nhất trần đời!
         </p>
 
-        <p>
-          Chưa phải người yêu, chỉ là người thương nhớ,<br />
-          Thầm lặng cùng bạn đi qua tháng năm.<br />
-          Mong đường đời luôn êm đềm như nước,<br />
-          Bình an về gói trọn những thương yêu.
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.85rem', color: '#521c2e', fontStyle: 'normal', lineHeight: 1.5 }}>
+          ✨ Hãy luôn mỉm cười và đón nhận những điều tuyệt vời nhất phía trước bạn nhé!
         </p>
       </div>
 
@@ -79,15 +76,15 @@ export const LetterCardPage2 = ({ name, onPrev, onNext }) => {
           onClick={onPrev}
         >
           <ChevronLeft size={15} />
-          <span>Trang 1</span>
+          <span>Trang 2</span>
         </button>
 
         <button
           style={{ ...btnStyle, background: 'linear-gradient(135deg, #521c2e, #36121d)', color: 'var(--color-gold-light)', border: '1px solid var(--color-gold-light)' }}
-          onClick={onNext}
+          onClick={onReset}
         >
-          <span>Trang 3</span>
-          <ChevronRight size={15} />
+          <RotateCcw size={14} />
+          <span>Đọc lại từ đầu</span>
         </button>
       </div>
     </div>

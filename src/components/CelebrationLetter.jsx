@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LetterCardPage1 } from './LetterCardPage1';
 import { LetterCardPage2 } from './LetterCardPage2';
+import { LetterCardPage3 } from './LetterCardPage3';
 
 const letterWrapperStyle = {
   position: 'relative',
@@ -33,13 +34,27 @@ export const CelebrationLetter = ({ name }) => {
     <div style={letterWrapperStyle}>
       <div style={envelopeBackStyle} />
       <div style={{ position: 'relative', width: '100%', zIndex: 2 }}>
-        {page === 1 ? (
+        {page === 1 && (
           <div key="page1" className="animate-card-shuffle-in">
             <LetterCardPage1 name={name} onNext={() => setPage(2)} />
           </div>
-        ) : (
+        )}
+        {page === 2 && (
           <div key="page2" className="animate-card-shuffle-in">
-            <LetterCardPage2 name={name} onPrev={() => setPage(1)} />
+            <LetterCardPage2
+              name={name}
+              onPrev={() => setPage(1)}
+              onNext={() => setPage(3)}
+            />
+          </div>
+        )}
+        {page === 3 && (
+          <div key="page3" className="animate-card-shuffle-in">
+            <LetterCardPage3
+              name={name}
+              onPrev={() => setPage(2)}
+              onReset={() => setPage(1)}
+            />
           </div>
         )}
       </div>
