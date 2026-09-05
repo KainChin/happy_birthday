@@ -3,7 +3,7 @@ import React from 'react';
 const daysGridStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(7, 1fr)',
-  gap: '6px',
+  gap: '5px',
   textAlign: 'center'
 };
 
@@ -24,7 +24,7 @@ export const DatePickerGrid = ({
   const daysArray = Array.from({ length: daysInMonth }, (_, i) => i + 1);
 
   return (
-    <div style={daysGridStyle}>
+    <div className="date-picker-grid" style={daysGridStyle}>
       {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map((w) => (
         <div key={w} style={weekHeaderStyle}>{w}</div>
       ))}
@@ -39,18 +39,19 @@ export const DatePickerGrid = ({
           <button
             key={day}
             type="button"
+            className="date-picker-day-btn"
             onClick={() => onDayClick(day)}
             style={{
-              padding: '10px 0',
+              padding: '9px 0',
               border: isSelected
                 ? '1.5px solid var(--color-gold-light)'
                 : '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '12px',
+              borderRadius: '11px',
               background: isSelected
                 ? 'linear-gradient(135deg, #70263f, #3b131f)'
                 : 'rgba(255, 255, 255, 0.07)',
               color: isSelected ? 'var(--color-gold-light)' : '#ffffff',
-              fontSize: '0.9rem',
+              fontSize: '0.88rem',
               fontWeight: isSelected ? 700 : 500,
               cursor: 'pointer',
               transition: 'all 0.2s ease',

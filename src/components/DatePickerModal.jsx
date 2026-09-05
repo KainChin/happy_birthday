@@ -14,7 +14,7 @@ const modalOverlayStyle = {
   WebkitBackdropFilter: 'blur(24px)',
   border: '1.5px solid rgba(229, 193, 88, 0.5)',
   borderRadius: '20px',
-  padding: '18px',
+  padding: '16px',
   boxShadow: '0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(82, 28, 46, 0.5)',
   animation: 'fadeInCard 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards'
 };
@@ -78,7 +78,7 @@ export const DatePickerModal = ({ selectedDate, onSelectDate, onClose }) => {
   })();
 
   return (
-    <div style={modalOverlayStyle}>
+    <div className="date-picker-overlay" style={modalOverlayStyle}>
       <DatePickerHeader
         currentMonth={currentMonth}
         currentYear={currentYear}
