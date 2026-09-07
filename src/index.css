@@ -1,6 +1,6 @@
 :root {
   --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-script: 'Great Vibes', 'Alex Brush', cursive;
+  --font-script: 'Great Vibes', 'Alex Brush', 'Dancing Script', cursive;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
   --color-cream: #fdfbf7;
@@ -98,7 +98,7 @@ html, body, #root {
   width: 100%;
 }
 
-/* Letter Component Styling */
+/* Letter Component Styling (Center Aligned & Cursive Calligraphy Font) */
 .letter-wrapper {
   position: relative;
   width: 100%;
@@ -133,11 +133,12 @@ html, body, #root {
   padding: 22px 16px 14px 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(212, 175, 55, 0.08);
   border: 1.5px solid rgba(212, 175, 55, 0.35);
-  text-align: left;
+  text-align: center;
   min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .letter-page-badge {
@@ -157,39 +158,49 @@ html, body, #root {
 .letter-header {
   margin-top: 4px;
   margin-bottom: 6px;
+  text-align: center;
+  width: 100%;
 }
 
 .letter-title {
   font-family: var(--font-script);
-  font-size: 1.2rem;
+  font-size: clamp(1.15rem, 3.8vw, 1.35rem);
   color: #361520;
   font-weight: 600;
   line-height: 1.3;
+  text-align: center;
+  font-style: italic;
 }
 
 .letter-subtitle {
   font-family: var(--font-script);
-  font-size: 1.02rem;
+  font-size: clamp(1.05rem, 3.4vw, 1.2rem);
   color: #611e32;
   font-weight: 600;
   margin-top: 2px;
+  text-align: center;
+  font-style: italic;
 }
 
 .letter-body {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-family: var(--font-script);
+  font-size: clamp(1.08rem, 3.6vw, 1.25rem);
+  font-style: italic;
   line-height: 1.55;
   color: #3d1624;
-  margin: 4px 0 10px 0;
+  margin: 6px 0 10px 0;
   flex: 1;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.letter-body.poem-style {
-  font-family: var(--font-script);
-  font-size: 1.08rem;
-  font-style: italic;
-  line-height: 1.5;
-  color: #3d1624;
+.letter-body p {
+  text-align: center;
+  width: 100%;
 }
 
 .letter-nav-row {
@@ -257,10 +268,9 @@ html, body, #root {
     min-height: 180px !important;
   }
 
-  .letter-title { font-size: 1.08rem !important; }
-  .letter-subtitle { font-size: 0.92rem !important; }
-  .letter-body { font-size: 0.8rem !important; }
-  .letter-body.poem-style { font-size: 0.95rem !important; }
+  .letter-title { font-size: 1.12rem !important; }
+  .letter-subtitle { font-size: 1.02rem !important; }
+  .letter-body { font-size: 1.05rem !important; }
 
   .login-card-container {
     padding: 24px 14px 20px 14px !important;
@@ -309,6 +319,6 @@ html, body, #root {
     min-height: 165px !important;
   }
 
-  .letter-title { font-size: 0.98rem !important; }
-  .letter-body.poem-style { font-size: 0.88rem !important; }
+  .letter-title { font-size: 1.02rem !important; }
+  .letter-body { font-size: 0.98rem !important; }
 }

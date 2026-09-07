@@ -35,7 +35,6 @@ export const CelebrationLetter = ({ name }) => {
     // Page 3
     {
       title: 'Nắng Thu Tháng Chín 🍂',
-      isPoem: true,
       content: (
         <p>
           Tháng Chín về mang nắng thu dịu nhẹ,<br />
@@ -48,7 +47,6 @@ export const CelebrationLetter = ({ name }) => {
     // Page 4
     {
       title: 'Gói Trọn Thương Yêu 💖',
-      isPoem: true,
       content: (
         <p>
           Chưa phải người yêu, chỉ là người thương nhớ,<br />
@@ -61,7 +59,6 @@ export const CelebrationLetter = ({ name }) => {
     // Page 5
     {
       title: 'Rực Rỡ Tuổi Mới 🎉',
-      isPoem: true,
       content: (
         <>
           <p style={{ marginBottom: '8px' }}>
@@ -70,7 +67,7 @@ export const CelebrationLetter = ({ name }) => {
             Giữ trong tim niềm vui ngàn sắc thắm,<br />
             Đón tuổi mới rực rỡ nhất trần đời!
           </p>
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '0.76rem', color: '#521c2e', fontStyle: 'normal', fontWeight: 600 }}>
+          <p style={{ fontSize: '0.96rem', color: '#521c2e', fontStyle: 'italic', fontWeight: 600 }}>
             ✨ Hãy luôn mỉm cười và đón nhận những điều tuyệt vời nhất bạn nhé!
           </p>
         </>
@@ -103,7 +100,7 @@ export const CelebrationLetter = ({ name }) => {
         </div>
 
         {/* Body */}
-        <div className={`letter-body ${currentPageData.isPoem ? 'poem-style' : ''}`}>
+        <div className="letter-body">
           {currentPageData.content}
         </div>
 
