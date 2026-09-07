@@ -45,79 +45,93 @@ html, body, #root {
   100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
 }
 
-/* Continuous Infinite Marquee Scroll */
-@keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.photo-marquee-container {
-  display: flex !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  padding: 8px 0 14px 0 !important;
-  position: relative;
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-}
-
-.photo-marquee-track {
-  display: flex !important;
-  gap: 16px !important;
-  width: max-content !important;
-  animation: marqueeScroll 32s linear infinite;
-}
-
-.photo-marquee-container:hover .photo-marquee-track {
-  animation-play-state: paused;
-}
-
 .animate-fade-in { animation: fadeInCard 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-spin { animation: spin 0.8s linear infinite; }
 .animate-card-shuffle-in { animation: shuffleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
-.polaroid-side-container {
+.celebration-dashboard-viewport {
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
   align-items: center;
+  padding: 12px 16px 36px 16px;
 }
 
-/* Desktop Viewport (1024px+) */
-@media (min-width: 1024px) {
-  .celebration-dashboard-viewport {
-    height: 100vh !important;
-    max-height: 100vh !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 8px 24px 12px 24px !important;
-  }
+/* Horizontal Surround Layout (7 Photos surrounding the letter) */
+.surround-layout-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1050px;
+  margin: 10px auto 18px auto;
 }
 
-/* Mobile Stack & Marquee (< 768px) */
+.surround-col-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.surround-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  max-width: 390px;
+  width: 100%;
+}
+
+.surround-top-photo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.surround-bottom-photos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Responsive adjustments for mobile & narrow screens */
 @media (max-width: 768px) {
-  .celebration-dashboard-viewport {
-    min-height: 100vh !important;
-    height: auto !important;
-    overflow-y: auto !important;
-    padding: 22px 12px 30px 12px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+  .surround-layout-container {
+    gap: 10px !important;
+    padding: 0 4px !important;
   }
 
-  .celebration-dashboard-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 16px !important;
-    width: 100% !important;
+  .surround-col-side {
+    gap: 12px !important;
   }
 
-  .desktop-only-gallery { display: none !important; }
+  .surround-bottom-photos {
+    gap: 10px !important;
+  }
+
+  .polaroid-card-wrapper {
+    width: 105px !important;
+    padding: 6px 6px 8px 6px !important;
+  }
+
+  .polaroid-card-wrapper img {
+    height: 95px !important;
+  }
+
+  .polaroid-card-wrapper span {
+    font-size: 0.82rem !important;
+    margin-top: 4px !important;
+  }
 
   .login-card-container {
     padding: 24px 14px 20px 14px !important;
@@ -131,10 +145,34 @@ html, body, #root {
 
   .date-picker-grid { gap: 3px !important; }
   .date-picker-day-btn { padding: 7px 0 !important; font-size: 0.82rem !important; }
-  .polaroid-card-wrapper { width: 135px !important; }
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@media (max-width: 480px) {
+  .surround-layout-container {
+    gap: 6px !important;
+  }
+
+  .surround-col-side {
+    gap: 8px !important;
+  }
+
+  .surround-bottom-photos {
+    gap: 8px !important;
+  }
+
+  .polaroid-card-wrapper {
+    width: 82px !important;
+    padding: 4px 4px 6px 4px !important;
+    border-radius: 8px !important;
+  }
+
+  .polaroid-card-wrapper img {
+    height: 75px !important;
+    border-radius: 6px !important;
+  }
+
+  .polaroid-card-wrapper span {
+    font-size: 0.72rem !important;
+    margin-top: 2px !important;
+  }
 }

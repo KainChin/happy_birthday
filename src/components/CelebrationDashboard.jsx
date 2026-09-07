@@ -1,24 +1,8 @@
 import React, { useState } from 'react';
 import { CelebrationHeader } from './CelebrationHeader';
-import { CelebrationLetter } from './CelebrationLetter';
-import {
-  PolaroidGalleryLeft,
-  PolaroidGalleryRight,
-  ContinuousPhotoMarquee
-} from './PolaroidGallery';
+import { CelebrationSurroundLayout } from './PolaroidGallery';
 import { SecretGiftBox } from './SecretGiftBox';
 import { SecretGiftModal } from './SecretGiftModal';
-
-const dashboardLayoutGrid = {
-  display: 'grid',
-  gridTemplateColumns: '1fr minmax(280px, 370px) 1fr',
-  gap: '20px',
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: '1050px',
-  margin: '0 auto',
-  flex: 1
-};
 
 export const CelebrationDashboard = ({ name }) => {
   const [isGiftOpen, setIsGiftOpen] = useState(false);
@@ -28,19 +12,17 @@ export const CelebrationDashboard = ({ name }) => {
       className="celebration-dashboard-viewport animate-fade-in"
       style={{
         width: '100%',
-        maxWidth: '1100px',
-        margin: '0 auto'
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '16px 12px 36px 12px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
       }}
     >
       <CelebrationHeader name={name} />
 
-      <div className="celebration-dashboard-grid" style={dashboardLayoutGrid}>
-        <PolaroidGalleryLeft />
-        <CelebrationLetter name={name} />
-        <PolaroidGalleryRight />
-      </div>
-
-      <ContinuousPhotoMarquee />
+      <CelebrationSurroundLayout name={name} />
 
       <SecretGiftBox onOpenGift={() => setIsGiftOpen(true)} />
 
