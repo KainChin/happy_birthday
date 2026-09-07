@@ -52,7 +52,7 @@ export const MusicPlayer = () => {
   return (
     <audio
       ref={audioRef}
-      src="/audio/happy_birthday.mp3"
+      src="/audio/die_with_a_smile.mp3"
       autoPlay
       loop
       preload="auto"
