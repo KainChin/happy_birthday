@@ -34,7 +34,6 @@ export const BackgroundLayer = ({ children }) => {
   return (
     <div style={backgroundStyle}>
       <MusicPlayer />
-      <div style={overlayStyle} />
       <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '100%', display: 'flex', justifyContent: 'center' }}>
         {children}
       </div>
