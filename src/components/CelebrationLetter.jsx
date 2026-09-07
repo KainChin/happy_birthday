@@ -151,9 +151,9 @@ export const CelebrationLetter = ({ name }) => {
           {currentPageData.content}
         </div>
 
-        {/* Dashed line & Footer bar: Hint on left, Page number on right above dashed line */}
+        {/* Dashed line & Footer bar: Page number on right above dashed line */}
         <div className="letter-footer-bar">
-          <span className="letter-swipe-hint">👈 Vuốt / kéo để lật trang 👉</span>
+          <div />
           <span className="letter-page-number">{page} / {totalPages}</span>
         </div>
       </div>
