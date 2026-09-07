@@ -14,7 +14,7 @@ const backgroundStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  overflowY: 'auto',
+  overflow: 'hidden',
   padding: '16px 12px',
   boxSizing: 'border-box'
 };
