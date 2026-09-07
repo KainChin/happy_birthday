@@ -5,7 +5,7 @@ import { formatCapitalizedName } from '../utils/validation';
 export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
   const displayName = formatCapitalizedName(name);
 
-  // Close modal when clicking on backdrop (outside card)
+  // Close modal when clicking on backdrop
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -34,12 +34,35 @@ export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
 
         {/* Checkered Birthday Ribbon Frame Container */}
         <div className="special-photo-checkered-frame">
-          <div className="special-photo-img-wrapper">
+          {/* Left Side Festive Birthday Stickers */}
+          <div className="side-decorations side-decorations-left">
+            <span className="side-emoji float-1">🎈</span>
+            <span className="side-emoji float-2">🎂</span>
+            <span className="side-emoji float-3">✨</span>
+            <span className="side-emoji float-4">💖</span>
+          </div>
+
+          {/* Center Image Container with Dreamy Ambient Glow Background */}
+          <div className="special-photo-img-container">
+            {/* Ambient Blurred Background of the Photo */}
+            <div
+              className="special-photo-ambient-bg"
+              style={{ backgroundImage: `url(${imageSrc})` }}
+            />
+            {/* Main Crisp Photo */}
             <img
               src={imageSrc}
               alt={`Happy Birthday ${displayName}`}
               className="special-photo-img"
             />
+          </div>
+
+          {/* Right Side Festive Birthday Stickers */}
+          <div className="side-decorations side-decorations-right">
+            <span className="side-emoji float-2">🎉</span>
+            <span className="side-emoji float-1">👑</span>
+            <span className="side-emoji float-4">🍰</span>
+            <span className="side-emoji float-3">🎁</span>
           </div>
         </div>
 
