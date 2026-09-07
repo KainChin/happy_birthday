@@ -2,27 +2,83 @@ import React, { useState } from 'react';
 import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
-export const CakeBalloon = () => {
-  return (
-    <div className="cake-balloon-wrapper animate-fade-in" title="Bong bóng bánh sinh nhật">
-      {/* Glass Bubble Sphere */}
-      <div className="balloon-sphere">
-        {/* Glossy Light Reflection */}
-        <div className="bubble-shine" />
+export const CakeRain = () => {
+  // Generate 95 randomized falling cake items
+  const cakeItems = Array.from({ length: 95 }).map((_, i) => ({
+    id: i,
+    left: `${Math.random() * 98}%`,
+    duration: `${2.2 + Math.random() * 3.5}s`,
+    delay: `${Math.random() * 2.2}s`,
+    fontSize: `${1.5 + Math.random() * 2.2}rem`,
+    icon: ['🎂', '🍰', '🧁', '🎂', '✨', '🎂', '🕯️', '🎁'][i % 8],
+    rotation: `${(Math.random() - 0.5) * 360}deg`
+  }));
 
-        {/* Birthday Cake Content Inside Bubble */}
-        <div className="balloon-cake-content">
-          <span className="cake-icon">🎂</span>
-          <span className="cake-label">Hãy nhận bánh kem nè!</span>
+  return (
+    <div className="cake-rain-overlay">
+      {cakeItems.map((item) => (
+        <span
+          key={item.id}
+          className="falling-cake-item"
+          style={{
+            left: item.left,
+            animationDuration: item.duration,
+            animationDelay: item.delay,
+            fontSize: item.fontSize,
+            transform: `rotate(${item.rotation})`
+          }}
+        >
+          {item.icon}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+export const SunBalloon = ({ onPop }) => {
+  const [isPopping, setIsPopping] = useState(false);
+
+  const handleClick = () => {
+    setIsPopping(true);
+    setTimeout(() => {
+      onPop();
+    }, 350);
+  };
+
+  if (isPopping) {
+    return (
+      <div className="sun-pop-explosion">
+        <span className="pop-flash" />
+        <span className="pop-emoji">💥</span>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="sun-balloon-wrapper animate-fade-in"
+      onClick={handleClick}
+      title="Bấm vào để nổ bong bóng mặt trời nhận hàng ngàn bánh kem!"
+    >
+      {/* Rotating Sun Rays & Solar Glow Aura */}
+      <div className="sun-rays" />
+      <div className="sun-glow-aura" />
+
+      {/* Sun Balloon Sphere */}
+      <div className="sun-balloon-sphere">
+        <div className="sun-shine" />
+        <div className="sun-cake-content">
+          <span className="sun-cake-icon">🎂</span>
+          <span className="sun-cake-label">Bấm vào nhận bánh nè! ☀️</span>
         </div>
       </div>
 
-      {/* Golden Thread String Hanging Down */}
-      <svg className="balloon-string" width="20" height="65" viewBox="0 0 20 65">
+      {/* Golden Thread String */}
+      <svg className="sun-string" width="22" height="65" viewBox="0 0 22 65">
         <path
-          d="M10 0 C 15 18, 5 36, 10 65"
-          stroke="var(--color-gold-light)"
-          strokeWidth="2.2"
+          d="M11 0 C 17 18, 5 36, 11 65"
+          stroke="#ffe875"
+          strokeWidth="2.5"
           strokeDasharray="4 2"
           fill="none"
         />
@@ -33,6 +89,9 @@ export const CakeBalloon = () => {
 
 export const CelebrationLetter = ({ name }) => {
   const [page, setPage] = useState(1);
+  const [showCakeRain, setShowCakeRain] = useState(false);
+  const [isBalloonPopped, setIsBalloonPopped] = useState(false);
+
   const displayName = formatCapitalizedName(name);
 
   // Touch & Mouse drag gesture states for swipe
@@ -113,6 +172,15 @@ export const CelebrationLetter = ({ name }) => {
   const currentPageData = letterPages[page - 1];
   const minSwipeDistance = 35;
 
+  const handlePopBalloon = () => {
+    setIsBalloonPopped(true);
+    setShowCakeRain(true);
+    // Cake rain stays active for 7 seconds
+    setTimeout(() => {
+      setShowCakeRain(false);
+    }, 7000);
+  };
+
   const handleTouchStart = (e) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -150,8 +218,11 @@ export const CelebrationLetter = ({ name }) => {
 
   return (
     <div className="letter-wrapper">
-      {/* Floating Birthday Cake Balloon when Page 5 is active */}
-      {page === 5 && <CakeBalloon />}
+      {/* Sun Balloon when Page 5 is active & not popped */}
+      {page === 5 && !isBalloonPopped && <SunBalloon onPop={handlePopBalloon} />}
+
+      {/* Raining Birthday Cakes Effect when Balloon is popped */}
+      {showCakeRain && <CakeRain />}
 
       <div className="envelope-back" />
       <div
