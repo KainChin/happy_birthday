@@ -406,32 +406,33 @@ html, body, #root {
 }
 
 .letter-title {
-  font-family: var(--font-script);
-  font-size: clamp(1.3rem, 4vw, 1.5rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3.8vw, 1.45rem);
   color: #361520;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.3;
   text-align: center;
-  font-style: italic;
+  letter-spacing: 0.01em;
 }
 
 .letter-subtitle {
-  font-family: var(--font-script);
-  font-size: clamp(1.1rem, 3.5vw, 1.28rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 3.2vw, 1.15rem);
   color: #611e32;
   font-weight: 600;
-  margin-top: 2px;
+  margin-top: 3px;
   text-align: center;
   font-style: italic;
 }
 
 .letter-body {
-  font-family: var(--font-script);
-  font-size: clamp(1.18rem, 3.8vw, 1.35rem);
-  font-style: italic;
-  line-height: 1.55;
-  color: #3d1624;
-  margin: 6px 0 10px 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.98rem, 3.2vw, 1.1rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.65;
+  color: #2b0c17;
+  margin: 8px 0 12px 0;
   flex: 1;
   text-align: center;
   width: 100%;
@@ -439,6 +440,7 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  letter-spacing: 0.015em;
 }
 
 .letter-body p {

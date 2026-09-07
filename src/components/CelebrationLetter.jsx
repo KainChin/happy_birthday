@@ -130,7 +130,7 @@ export const CelebrationLetter = ({ name }) => {
           <p style={{ marginBottom: '8px' }}>
             Mong chặng đường sắp tới của cậu luôn ngập tràn may mắn, bình an và nhiều trải nghiệm thú vị. Cùng đón chờ một tuổi mới thật rực rỡ và tràn đầy hạnh phúc cậu nhé!
           </p>
-          <p style={{ fontSize: '0.96rem', color: '#521c2e', fontStyle: 'italic', fontWeight: 600 }}>
+          <p style={{ fontSize: '0.94rem', color: '#611e32', fontWeight: 600, marginTop: '4px' }}>
             ✨ Chúc cậu luôn vui vẻ, may mắn và hạnh phúc mỗi ngày!
           </p>
         </>
