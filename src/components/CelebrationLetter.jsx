@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
@@ -91,6 +91,13 @@ export const CelebrationLetter = ({ name }) => {
   const [page, setPage] = useState(1);
   const [showCakeRain, setShowCakeRain] = useState(false);
   const [isBalloonPopped, setIsBalloonPopped] = useState(false);
+
+  // Reset balloon state whenever user navigates away from page 5 (so re-reading restores the sun balloon)
+  useEffect(() => {
+    if (page !== 5) {
+      setIsBalloonPopped(false);
+    }
+  }, [page]);
 
   const displayName = formatCapitalizedName(name);
 
