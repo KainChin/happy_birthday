@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
 export const CelebrationLetter = ({ name }) => {
   const [page, setPage] = useState(1);
   const displayName = formatCapitalizedName(name);
+
+  // Touch & Mouse drag gesture states for swipe
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [mouseDownX, setMouseDownX] = useState(0);
 
   const letterPages = [
     // Page 1
@@ -32,40 +37,40 @@ export const CelebrationLetter = ({ name }) => {
         </>
       )
     },
-    // Page 3
+    // Page 3: Thơ 6 chữ (Khổ 1)
     {
       title: 'Nắng Thu Tháng Chín 🍂',
       content: (
         <p>
-          Tháng Chín về mang nắng thu dịu nhẹ,<br />
-          Gió khẽ vờn qua suối tóc mây bay.<br />
-          Chúc Khánh Phương tuổi mới thêm rạng rỡ,<br />
-          Nụ cười hiền làm đắm say lòng ai.
+          Tháng Chín mang heo may về,<br />
+          Gió khẽ mơn suối tóc mây.<br />
+          Chúc Khánh Phương thêm rạng rỡ,<br />
+          Nụ cười đắm say lòng ai.
         </p>
       )
     },
-    // Page 4
+    // Page 4: Thơ 6 chữ (Khổ 2)
     {
       title: 'Gói Trọn Thương Yêu 💖',
       content: (
         <p>
-          Chưa phải người yêu, chỉ là người thương nhớ,<br />
-          Thầm lặng cùng bạn đi qua tháng năm.<br />
-          Mong đường đời luôn êm đềm như nước,<br />
-          Bình an về gói trọn những thương yêu.
+          Chẳng phải tình yêu xa vắng,<br />
+          Chỉ là người thương thầm mong.<br />
+          Mong đường đời luôn êm dịu,<br />
+          Bình an gói trọn thương yêu.
         </p>
       )
     },
-    // Page 5
+    // Page 5: Thơ 6 chữ (Khổ 3)
     {
       title: 'Rực Rỡ Tuổi Mới 🎉',
       content: (
         <>
           <p style={{ marginBottom: '8px' }}>
-            Mong mỗi ngày bạn gặp nhiều may mắn,<br />
-            Áo dài thơ, nón lá nghiêng nụ cười.<br />
-            Giữ trong tim niềm vui ngàn sắc thắm,<br />
-            Đón tuổi mới rực rỡ nhất trần đời!
+            Mỗi ngày gặp nhiều may mắn,<br />
+            Áo dài nón lá thắm tươi.<br />
+            Giữ trọn niềm vui tuổi mới,<br />
+            Rạng rỡ nhất cả trần đời!
           </p>
           <p style={{ fontSize: '0.96rem', color: '#521c2e', fontStyle: 'italic', fontWeight: 600 }}>
             ✨ Hãy luôn mỉm cười và đón nhận những điều tuyệt vời nhất bạn nhé!
@@ -77,17 +82,59 @@ export const CelebrationLetter = ({ name }) => {
 
   const totalPages = letterPages.length;
   const currentPageData = letterPages[page - 1];
+  const minSwipeDistance = 35;
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) {
+      // Vuốt sang trái -> Trang tiếp theo (hoặc lặp lại trang 1 khi ở trang cuối)
+      setPage((prev) => (prev < totalPages ? prev + 1 : 1));
+    } else if (distance < -minSwipeDistance) {
+      // Vuốt sang phải -> Trang trước
+      setPage((prev) => (prev > 1 ? prev - 1 : 1));
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    setIsMouseDown(true);
+    setMouseDownX(e.clientX);
+  };
+
+  const handleMouseUp = (e) => {
+    if (!isMouseDown) return;
+    setIsMouseDown(false);
+    const distance = mouseDownX - e.clientX;
+    if (distance > minSwipeDistance) {
+      setPage((prev) => (prev < totalPages ? prev + 1 : 1));
+    } else if (distance < -minSwipeDistance) {
+      setPage((prev) => (prev > 1 ? prev - 1 : 1));
+    }
+  };
 
   return (
     <div className="letter-wrapper">
       <div className="envelope-back" />
-      <div className="letter-paper animate-card-shuffle-in" key={page}>
+      <div
+        className="letter-paper animate-card-shuffle-in"
+        key={page}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        style={{ cursor: isMouseDown ? 'grabbing' : 'grab', userSelect: 'none' }}
+      >
         <PaperclipIcon />
-
-        {/* Vintage Page Number at corner */}
-        <div className="letter-corner-page-num">
-          {page} / {totalPages}
-        </div>
 
         {/* Header */}
         <div className="letter-header">
@@ -104,35 +151,10 @@ export const CelebrationLetter = ({ name }) => {
           {currentPageData.content}
         </div>
 
-        {/* Navigation buttons */}
-        <div className="letter-nav-row">
-          {page > 1 ? (
-            <button
-              className="letter-btn btn-prev"
-              onClick={() => setPage(page - 1)}
-            >
-              <ChevronLeft size={14} />
-              <span>Quay lại</span>
-            </button>
-          ) : <div />}
-
-          {page < totalPages ? (
-            <button
-              className="letter-btn btn-next"
-              onClick={() => setPage(page + 1)}
-            >
-              <span>Trang tiếp</span>
-              <ChevronRight size={14} />
-            </button>
-          ) : (
-            <button
-              className="letter-btn btn-next"
-              onClick={() => setPage(1)}
-            >
-              <RotateCcw size={13} />
-              <span>Đọc lại</span>
-            </button>
-          )}
+        {/* Dashed line & Footer bar: Hint on left, Page number on right above dashed line */}
+        <div className="letter-footer-bar">
+          <span className="letter-swipe-hint">👈 Vuốt / kéo để lật trang 👉</span>
+          <span className="letter-page-number">{page} / {totalPages}</span>
         </div>
       </div>
     </div>

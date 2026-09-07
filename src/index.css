@@ -99,7 +99,7 @@ html, body, #root {
   width: 100%;
 }
 
-/* Letter Component Styling (Center Aligned, Handwritten Page Number at bottom right) */
+/* Letter Component Styling (Center Aligned, Swipe Gesture Enabled) */
 .letter-wrapper {
   position: relative;
   width: 100%;
@@ -140,20 +140,6 @@ html, body, #root {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
-
-/* Handwritten Script Page Number at bottom-right corner */
-.letter-corner-page-num {
-  position: absolute;
-  bottom: 36px;
-  right: 18px;
-  font-family: var(--font-script);
-  font-size: 1.15rem;
-  font-style: italic;
-  color: #611e32;
-  font-weight: 600;
-  pointer-events: none;
-  opacity: 0.85;
 }
 
 .letter-header {
@@ -205,40 +191,30 @@ html, body, #root {
   width: 100%;
 }
 
-.letter-nav-row {
+/* Dashed divider line & footer bar with page number on the right */
+.letter-footer-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   margin-top: auto;
   padding-top: 6px;
-  border-top: 1px dashed rgba(82, 28, 46, 0.15);
+  border-top: 1px dashed rgba(82, 28, 46, 0.22);
 }
 
-.letter-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 14px;
-  border-radius: 16px;
-  font-size: 0.78rem;
+.letter-swipe-hint {
   font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: rgba(82, 28, 46, 0.55);
+  font-style: italic;
+}
+
+.letter-page-number {
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #611e32;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-prev {
-  background: rgba(54, 18, 29, 0.08);
-  color: #521c2e;
-  border: 1px solid rgba(82, 28, 46, 0.3);
-}
-
-.btn-next {
-  background: linear-gradient(135deg, #521c2e, #36121d);
-  color: var(--color-gold-light);
-  border: 1px solid var(--color-gold-light);
-  margin-left: auto;
 }
 
 /* DESKTOP / LAPTOP FULL-VIEWPORT FIT (Photos Close to Letter) */
