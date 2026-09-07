@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PaperclipIcon } from './PaperclipIcon';
+import { SpecialPhotoModal } from './SpecialPhotoModal';
 import { formatCapitalizedName } from '../utils/validation';
 
 export const CakeRain = () => {
@@ -95,6 +96,7 @@ export const CelebrationLetter = ({ name }) => {
   const [page, setPage] = useState(1);
   const [showCakeRain, setShowCakeRain] = useState(false);
   const [isBalloonPopped, setIsBalloonPopped] = useState(false);
+  const [showSpecialPhotoModal, setShowSpecialPhotoModal] = useState(false);
 
   const displayName = formatCapitalizedName(name);
 
@@ -139,10 +141,11 @@ export const CelebrationLetter = ({ name }) => {
   const totalPages = letterPages.length;
   const currentPageData = letterPages[page - 1];
 
-  // Reset balloon state whenever user navigates away from final page
+  // Reset balloon & modal state whenever user navigates away from final page
   useEffect(() => {
     if (page !== totalPages) {
       setIsBalloonPopped(false);
+      setShowSpecialPhotoModal(false);
     }
   }, [page, totalPages]);
 
@@ -152,6 +155,7 @@ export const CelebrationLetter = ({ name }) => {
     // Cake rain stays active for 9.5 seconds until all cakes have completely fallen past bottom screen
     setTimeout(() => {
       setShowCakeRain(false);
+      setShowSpecialPhotoModal(true);
     }, 9500);
   };
 
@@ -162,6 +166,15 @@ export const CelebrationLetter = ({ name }) => {
 
       {/* Raining Birthday Cakes Effect when Balloon is popped */}
       {showCakeRain && <CakeRain />}
+
+      {/* Special Photo Modal with Birthday Checkered Ribbon Frame displayed after Cake Rain */}
+      {showSpecialPhotoModal && (
+        <SpecialPhotoModal
+          imageSrc="photos/special_gift.jpg"
+          name={name}
+          onClose={() => setShowSpecialPhotoModal(false)}
+        />
+      )}
 
       <div className="envelope-back" />
       <div

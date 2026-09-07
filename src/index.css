@@ -766,3 +766,165 @@ html, body, #root {
   .letter-title { font-size: 1.02rem !important; }
   .letter-body { font-size: 0.96rem !important; }
 }
+
+/* Special Photo Modal & Checkered Ribbon Frame System */
+@keyframes popInModal {
+  0% { transform: scale(0.7) translateY(20px); opacity: 0; }
+  70% { transform: scale(1.03) translateY(-4px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.animate-pop-in {
+  animation: popInModal 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.special-photo-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 8, 12, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.special-photo-card {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background: #2b111b;
+  border: 2px solid #e5c158;
+  border-radius: 24px;
+  padding: 24px 20px 20px 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(229, 193, 88, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Close Button (X) at Top Right */
+.special-photo-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(229, 193, 88, 0.6);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.special-photo-close-btn:hover {
+  background: #d992a5;
+  color: #2b111b;
+  border-color: #ffffff;
+  transform: scale(1.12) rotate(90deg);
+}
+
+/* Festive Header Badge */
+.special-photo-header-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.special-photo-header-badge .badge-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+  color: #e5c158;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(229, 193, 88, 0.4);
+}
+
+.special-photo-header-badge .badge-icon {
+  font-size: 1.4rem;
+}
+
+/* Checkered Birthday Ribbon Frame */
+.special-photo-checkered-frame {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  border-radius: 18px;
+  /* Classic Pink & White Birthday Gingham / Checkered Ribbon Pattern */
+  background-color: #ffd6e0;
+  background-image:
+    linear-gradient(45deg, #f8a5c2 25%, transparent 25%, transparent 75%, #f8a5c2 75%, #f8a5c2),
+    linear-gradient(45deg, #f8a5c2 25%, #ffd6e0 25%, #ffd6e0 75%, #f8a5c2 75%, #f8a5c2);
+  background-position: 0 0, 12px 12px;
+  background-size: 24px 24px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.25), 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 2.5px solid #ffffff;
+}
+
+.special-photo-img-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  background: #000;
+}
+
+.special-photo-img {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* Bottom Caption */
+.special-photo-footer {
+  margin-top: 14px;
+  width: 100%;
+}
+
+.special-photo-caption {
+  font-family: var(--font-script);
+  font-size: clamp(1.15rem, 3.8vw, 1.4rem);
+  color: #fdfbf7;
+  font-style: italic;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .special-photo-card {
+    padding: 18px 12px 14px 12px !important;
+    border-radius: 20px !important;
+  }
+
+  .special-photo-checkered-frame {
+    padding: 10px !important;
+    border-radius: 14px !important;
+    background-size: 18px 18px !important;
+    background-position: 0 0, 9px 9px !important;
+  }
+
+  .special-photo-close-btn {
+    top: 10px !important;
+    right: 10px !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
