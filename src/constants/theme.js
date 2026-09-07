@@ -7,7 +7,7 @@ export const TEXTS = {
   INPUT_NAME_LABEL: 'Mời quý cô nhập tên',
   INPUT_DATE_LABEL: 'Mời quý cô chọn ngày sinh nhật của mình',
   BUTTON_UNLOCK: 'MỞ KHÓA MÓN QUÀ',
-  BUTTON_UNLOCKING: 'ĐANG MỞ KHÓA...',
+  BUTTON_UNLOCKING: 'ĐỢI XÍU NHEN =))...',
   SUCCESS_TITLE: 'Món Quà Đã Mở Khóa!',
   SUCCESS_MSG: 'Chúc mừng sinh nhật cô gái tuyệt vời'
 };
