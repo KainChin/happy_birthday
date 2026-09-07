@@ -22,11 +22,11 @@ const cardStyle = {
   boxSizing: 'border-box'
 };
 
-export const LoginCard = () => {
+export const LoginCard = ({ loginState }) => {
   return (
     <div className="login-card-container animate-fade-in" style={cardStyle}>
       <LoginHeader />
-      <LoginForm />
+      <LoginForm loginState={loginState} />
       <FloralDecoration />
     </div>
   );

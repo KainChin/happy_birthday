@@ -2,7 +2,6 @@ import React from 'react';
 import { User, Calendar, AlertCircle } from 'lucide-react';
 import { FormInput } from './FormInput';
 import { UnlockButton } from './UnlockButton';
-import { SuccessView } from './SuccessView';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { TEXTS } from '../constants/theme';
 
@@ -24,21 +23,17 @@ const errorBannerStyle = {
   animation: 'fadeInCard 0.4s ease forwards'
 };
 
-export const LoginForm = () => {
+export const LoginForm = ({ loginState }) => {
+  const localState = useLoginForm();
   const {
     fullName,
     birthDate,
     authError,
     isLoading,
-    isUnlocked,
     handleNameChange,
     handleDateChange,
     handleSubmit
-  } = useLoginForm();
-
-  if (isUnlocked) {
-    return <SuccessView fullName={fullName} birthDate={birthDate} />;
-  }
+  } = loginState || localState;
 
   return (
     <form onSubmit={handleSubmit} noValidate style={{ width: '100%' }}>
