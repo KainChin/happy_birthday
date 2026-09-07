@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Sparkles } from 'lucide-react';
+import { X } from 'lucide-react';
 import { formatCapitalizedName } from '../utils/validation';
 
 export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
@@ -13,14 +13,6 @@ export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
     }, 450);
     return () => clearTimeout(timer);
   }, []);
-
-  // Re-trigger curtain parting reveal on click
-  const handleReplayCurtains = () => {
-    setIsCurtainOpened(false);
-    setTimeout(() => {
-      setIsCurtainOpened(true);
-    }, 200);
-  };
 
   // Close modal when clicking on backdrop
   const handleBackdropClick = (e) => {
@@ -94,19 +86,11 @@ export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
           </div>
         </div>
 
-        {/* Bottom Festive Caption + Replay Curtains Button */}
+        {/* Bottom Festive Caption */}
         <div className="special-photo-footer">
           <p className="special-photo-caption">
             ✨ Giữ trọn những khoảnh khắc tươi đẹp & rạng rỡ nhất tuổi mới! 💖
           </p>
-          <button
-            className="replay-curtains-btn"
-            onClick={handleReplayCurtains}
-            title="Vén màn xem lại"
-          >
-            <Sparkles size={15} />
-            <span>Vén màn xem lại ✨</span>
-          </button>
         </div>
       </div>
     </div>
