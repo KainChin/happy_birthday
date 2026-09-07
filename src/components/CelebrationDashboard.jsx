@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CelebrationSurroundLayout } from './PolaroidGallery';
-import { SecretGiftBox } from './SecretGiftBox';
-import { SecretGiftModal } from './SecretGiftModal';
 
 export const CelebrationDashboard = ({ name }) => {
-  const [isGiftOpen, setIsGiftOpen] = useState(false);
-
   return (
     <div
       className="celebration-dashboard-viewport animate-fade-in"
@@ -13,19 +9,14 @@ export const CelebrationDashboard = ({ name }) => {
         width: '100%',
         maxWidth: '1250px',
         margin: '0 auto',
-        padding: '12px 12px 36px 12px',
+        padding: '12px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
     >
       <CelebrationSurroundLayout name={name} />
-
-      <SecretGiftBox onOpenGift={() => setIsGiftOpen(true)} />
-
-      {isGiftOpen && (
-        <SecretGiftModal onClose={() => setIsGiftOpen(false)} name={name} />
-      )}
     </div>
   );
 };
