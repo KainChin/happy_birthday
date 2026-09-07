@@ -3,15 +3,15 @@ import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
 export const CakeRain = () => {
-  // Optimized item count (24 on mobile, 36 on desktop) for 60fps smooth animation without lag
+  // Optimized item count for smooth animation
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  const count = isMobile ? 24 : 36;
+  const count = isMobile ? 30 : 45;
 
   const cakeItems = Array.from({ length: count }).map((_, i) => ({
     id: i,
     left: `${Math.random() * 95}%`,
-    duration: `${2.2 + Math.random() * 2.6}s`,
-    delay: `${Math.random() * 2.2}s`,
+    duration: `${2.8 + Math.random() * 1.8}s`,
+    delay: `${Math.random() * 4.2}s`,
     fontSize: isMobile ? `${1.4 + Math.random() * 1.5}rem` : `${1.6 + Math.random() * 1.8}rem`,
     icon: ['🎂', '🍰', '🧁', '🎂', '✨', '🎂', '🕯️', '🎁'][i % 8],
     rotation: `${(Math.random() - 0.5) * 360}deg`
@@ -27,6 +27,7 @@ export const CakeRain = () => {
             left: item.left,
             animationDuration: item.duration,
             animationDelay: item.delay,
+            animationIterationCount: 1,
             fontSize: item.fontSize,
             transform: `rotate(${item.rotation})`
           }}
@@ -148,10 +149,10 @@ export const CelebrationLetter = ({ name }) => {
   const handlePopBalloon = () => {
     setIsBalloonPopped(true);
     setShowCakeRain(true);
-    // Cake rain stays active for 7 seconds
+    // Cake rain stays active for 9.5 seconds until all cakes have completely fallen past bottom screen
     setTimeout(() => {
       setShowCakeRain(false);
-    }, 7000);
+    }, 9500);
   };
 
   return (

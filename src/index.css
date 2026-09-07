@@ -289,9 +289,11 @@ html, body, #root {
 
 .falling-cake-item {
   position: absolute;
-  top: -50px;
+  top: -70px;
   will-change: transform, opacity;
-  animation: cakeFall linear infinite;
+  animation-name: cakeFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.6);
   user-select: none;
 }
@@ -299,17 +301,17 @@ html, body, #root {
 @keyframes cakeFall {
   0% {
     opacity: 0;
-    transform: translate3d(0, -60px, 0) rotate(0deg);
+    transform: translate3d(0, -70px, 0) rotate(0deg);
   }
-  10% {
+  5% {
     opacity: 1;
   }
-  90% {
+  96% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: translate3d(0, 110vh, 0) rotate(360deg);
+    transform: translate3d(0, 115vh, 0) rotate(360deg);
   }
 }
 
