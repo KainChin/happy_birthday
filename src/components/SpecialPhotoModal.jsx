@@ -1,9 +1,26 @@
-import React from 'react';
-import { X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Sparkles } from 'lucide-react';
 import { formatCapitalizedName } from '../utils/validation';
 
 export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
   const displayName = formatCapitalizedName(name);
+  const [isCurtainOpened, setIsCurtainOpened] = useState(false);
+
+  // Auto-play curtain parting reveal animation after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsCurtainOpened(true);
+    }, 450);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Re-trigger curtain parting reveal on click
+  const handleReplayCurtains = () => {
+    setIsCurtainOpened(false);
+    setTimeout(() => {
+      setIsCurtainOpened(true);
+    }, 200);
+  };
 
   // Close modal when clicking on backdrop
   const handleBackdropClick = (e) => {
@@ -32,7 +49,7 @@ export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
           <span className="badge-icon">🎀</span>
         </div>
 
-        {/* Checkered Birthday Ribbon Frame Container */}
+        {/* Checkered Birthday Ribbon Frame Container with Curtain Reveal */}
         <div className="special-photo-checkered-frame">
           {/* Left Side Festive Birthday Stickers */}
           <div className="side-decorations side-decorations-left">
@@ -42,18 +59,29 @@ export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
             <span className="side-emoji float-4">💖</span>
           </div>
 
-          {/* Center Image Container with Dreamy Ambient Glow Background */}
+          {/* Center Image Container with Curtains & Ambient Glow */}
           <div className="special-photo-img-container">
+            {/* Curtain Panel Left */}
+            <div className={`curtain-panel curtain-left ${isCurtainOpened ? 'curtain-open-left' : ''}`}>
+              <div className="curtain-gold-trim" />
+            </div>
+
+            {/* Curtain Panel Right */}
+            <div className={`curtain-panel curtain-right ${isCurtainOpened ? 'curtain-open-right' : ''}`}>
+              <div className="curtain-gold-trim" />
+            </div>
+
             {/* Ambient Blurred Background of the Photo */}
             <div
               className="special-photo-ambient-bg"
               style={{ backgroundImage: `url(${imageSrc})` }}
             />
-            {/* Main Crisp Photo */}
+
+            {/* Crisp Main Photo */}
             <img
               src={imageSrc}
               alt={`Happy Birthday ${displayName}`}
-              className="special-photo-img"
+              className={`special-photo-img ${isCurtainOpened ? 'photo-revealed' : ''}`}
             />
           </div>
 
@@ -66,11 +94,19 @@ export const SpecialPhotoModal = ({ imageSrc, name, onClose }) => {
           </div>
         </div>
 
-        {/* Bottom Festive Caption */}
+        {/* Bottom Festive Caption + Replay Curtains Button */}
         <div className="special-photo-footer">
           <p className="special-photo-caption">
             ✨ Giữ trọn những khoảnh khắc tươi đẹp & rạng rỡ nhất tuổi mới! 💖
           </p>
+          <button
+            className="replay-curtains-btn"
+            onClick={handleReplayCurtains}
+            title="Vén màn xem lại"
+          >
+            <Sparkles size={15} />
+            <span>Vén màn xem lại ✨</span>
+          </button>
         </div>
       </div>
     </div>
