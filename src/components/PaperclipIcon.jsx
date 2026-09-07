@@ -2,9 +2,8 @@ import React from 'react';
 
 const clipWrapperStyle = {
   position: 'absolute',
-  top: '-14px',
-  left: '50%',
-  transform: 'translateX(-50%)',
+  top: '-16px',
+  left: '16px',
   zIndex: 10,
   filter: 'drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.5))'
 };
