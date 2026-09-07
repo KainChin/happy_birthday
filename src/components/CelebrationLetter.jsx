@@ -2,31 +2,31 @@ import React, { useState } from 'react';
 import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
-export const CakeBanner = () => {
+export const CakeBalloon = () => {
   return (
-    <div className="cake-banner-container animate-fade-in">
-      <div className="cake-banner-track">
-        <div className="cake-banner-content">
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
-        </div>
-        <div className="cake-banner-content">
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
-          <span className="cake-emoji">🎂</span>
-          <span className="cake-text">Hãy nhận bánh kem nè</span>
+    <div className="cake-balloon-wrapper animate-fade-in" title="Bong bóng bánh sinh nhật">
+      {/* Glass Bubble Sphere */}
+      <div className="balloon-sphere">
+        {/* Glossy Light Reflection */}
+        <div className="bubble-shine" />
+
+        {/* Birthday Cake Content Inside Bubble */}
+        <div className="balloon-cake-content">
+          <span className="cake-icon">🎂</span>
+          <span className="cake-label">Hãy nhận bánh kem nè!</span>
         </div>
       </div>
+
+      {/* Golden Thread String Hanging Down */}
+      <svg className="balloon-string" width="20" height="65" viewBox="0 0 20 65">
+        <path
+          d="M10 0 C 15 18, 5 36, 10 65"
+          stroke="var(--color-gold-light)"
+          strokeWidth="2.2"
+          strokeDasharray="4 2"
+          fill="none"
+        />
+      </svg>
     </div>
   );
 };
@@ -150,8 +150,8 @@ export const CelebrationLetter = ({ name }) => {
 
   return (
     <div className="letter-wrapper">
-      {/* Top Banner when Page 5 is active */}
-      {page === 5 && <CakeBanner />}
+      {/* Floating Birthday Cake Balloon when Page 5 is active */}
+      {page === 5 && <CakeBalloon />}
 
       <div className="envelope-back" />
       <div
