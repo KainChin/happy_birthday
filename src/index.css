@@ -99,7 +99,7 @@ html, body, #root {
   width: 100%;
 }
 
-/* Letter Component Styling (Center Aligned, Handwritten Page Number) */
+/* Letter Component Styling (Center Aligned, Handwritten Page Number at bottom right) */
 .letter-wrapper {
   position: relative;
   width: 100%;
@@ -142,10 +142,10 @@ html, body, #root {
   align-items: center;
 }
 
-/* Handwritten Script Page Number at top-right corner */
+/* Handwritten Script Page Number at bottom-right corner */
 .letter-corner-page-num {
   position: absolute;
-  top: 12px;
+  bottom: 36px;
   right: 18px;
   font-family: var(--font-script);
   font-size: 1.15rem;
@@ -161,7 +161,7 @@ html, body, #root {
   margin-bottom: 6px;
   text-align: center;
   width: 100%;
-  padding: 0 36px;
+  padding: 0 12px;
 }
 
 .letter-title {
@@ -408,7 +408,7 @@ html, body, #root {
   }
 
   .letter-header {
-    padding: 0 28px !important;
+    padding: 0 10px !important;
   }
 
   .letter-title { font-size: 1.18rem !important; }
