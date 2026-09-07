@@ -57,16 +57,16 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 8px 12px;
 }
 
-/* Horizontal U-Shape Surround Layout (8 Photos) */
+/* Horizontal U-Shape Surround Layout (Photos pulled closer to letter) */
 .surround-layout-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -77,14 +77,14 @@ html, body, #root {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
 }
 
 .surround-col-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   flex: 1;
   max-width: 460px;
   width: 100%;
@@ -95,11 +95,11 @@ html, body, #root {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
   width: 100%;
 }
 
-/* Letter Component Styling (Center Aligned, Spacious & Cursive Calligraphy Font) */
+/* Letter Component Styling (Center Aligned, Handwritten Page Number) */
 .letter-wrapper {
   position: relative;
   width: 100%;
@@ -131,7 +131,7 @@ html, body, #root {
   background-color: #fbf7ee;
   color: #2a141c;
   border-radius: 18px;
-  padding: 24px 20px 16px 20px;
+  padding: 22px 20px 14px 20px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(212, 175, 55, 0.08);
   border: 1.5px solid rgba(212, 175, 55, 0.35);
   text-align: center;
@@ -142,18 +142,18 @@ html, body, #root {
   align-items: center;
 }
 
-.letter-page-badge {
+/* Handwritten Script Page Number at top-right corner */
+.letter-corner-page-num {
   position: absolute;
   top: 12px;
-  right: 16px;
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
+  right: 18px;
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #611e32;
   font-weight: 600;
-  color: rgba(82, 28, 46, 0.75);
-  background: rgba(212, 175, 55, 0.15);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  padding: 3px 9px;
-  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0.85;
 }
 
 .letter-header {
@@ -161,7 +161,7 @@ html, body, #root {
   margin-bottom: 6px;
   text-align: center;
   width: 100%;
-  padding: 0 48px;
+  padding: 0 36px;
 }
 
 .letter-title {
@@ -241,13 +241,13 @@ html, body, #root {
   margin-left: auto;
 }
 
-/* DESKTOP / LAPTOP FULL-VIEWPORT FIT (Spacious & Prominent Letter) */
+/* DESKTOP / LAPTOP FULL-VIEWPORT FIT (Photos Close to Letter) */
 @media (min-width: 769px) {
   .celebration-dashboard-viewport {
     height: 100vh !important;
     max-height: 100vh !important;
     overflow: hidden !important;
-    padding: 12px 16px !important;
+    padding: 10px 14px !important;
     justify-content: center !important;
     align-items: center !important;
   }
@@ -268,20 +268,20 @@ html, body, #root {
 
   .surround-layout-container {
     margin: 0 auto !important;
-    gap: 20px !important;
+    gap: 10px !important;
   }
 
   .surround-col-side {
-    gap: 12px !important;
+    gap: 8px !important;
   }
 
   .surround-col-center {
-    gap: 10px !important;
+    gap: 6px !important;
     max-width: 450px !important;
   }
 
   .surround-bottom-photos {
-    gap: 18px !important;
+    gap: 10px !important;
   }
 
   .letter-wrapper {
@@ -297,24 +297,24 @@ html, body, #root {
 /* Medium & Short Height Laptop Screens (< 768px Viewport Height) */
 @media (min-width: 769px) and (max-height: 768px) {
   .celebration-dashboard-viewport {
-    padding: 8px 10px !important;
+    padding: 6px 10px !important;
   }
 
   .surround-layout-container {
-    gap: 14px !important;
+    gap: 8px !important;
   }
 
   .surround-col-side {
-    gap: 10px !important;
+    gap: 6px !important;
   }
 
   .surround-col-center {
-    gap: 8px !important;
+    gap: 4px !important;
     max-width: 410px !important;
   }
 
   .surround-bottom-photos {
-    gap: 14px !important;
+    gap: 8px !important;
   }
 
   .polaroid-card-wrapper {
@@ -377,16 +377,16 @@ html, body, #root {
 /* Mobile & Touch Screen Devices (< 768px Width) */
 @media (max-width: 768px) {
   .surround-layout-container {
-    gap: 8px !important;
+    gap: 4px !important;
     padding: 0 2px !important;
   }
 
   .surround-col-side {
-    gap: 10px !important;
+    gap: 6px !important;
   }
 
   .surround-bottom-photos {
-    gap: 8px !important;
+    gap: 6px !important;
   }
 
   .polaroid-card-wrapper {
@@ -408,7 +408,7 @@ html, body, #root {
   }
 
   .letter-header {
-    padding: 0 35px !important;
+    padding: 0 28px !important;
   }
 
   .letter-title { font-size: 1.18rem !important; }
@@ -431,15 +431,15 @@ html, body, #root {
 
 @media (max-width: 480px) {
   .surround-layout-container {
-    gap: 4px !important;
+    gap: 3px !important;
   }
 
   .surround-col-side {
-    gap: 6px !important;
+    gap: 5px !important;
   }
 
   .surround-bottom-photos {
-    gap: 6px !important;
+    gap: 4px !important;
   }
 
   .polaroid-card-wrapper {

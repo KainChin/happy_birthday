@@ -84,9 +84,9 @@ export const CelebrationLetter = ({ name }) => {
       <div className="letter-paper animate-card-shuffle-in" key={page}>
         <PaperclipIcon />
 
-        {/* Page Badge */}
-        <div className="letter-page-badge">
-          Trang {page} / {totalPages}
+        {/* Vintage Page Number at corner */}
+        <div className="letter-corner-page-num">
+          {page} / {totalPages}
         </div>
 
         {/* Header */}
