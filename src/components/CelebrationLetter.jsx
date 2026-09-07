@@ -2,6 +2,35 @@ import React, { useState } from 'react';
 import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
+export const CakeBanner = () => {
+  return (
+    <div className="cake-banner-container animate-fade-in">
+      <div className="cake-banner-track">
+        <div className="cake-banner-content">
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+        </div>
+        <div className="cake-banner-content">
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+          <span className="cake-emoji">🎂</span>
+          <span className="cake-text">Hãy nhận bánh kem nè</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const CelebrationLetter = ({ name }) => {
   const [page, setPage] = useState(1);
   const displayName = formatCapitalizedName(name);
@@ -97,10 +126,8 @@ export const CelebrationLetter = ({ name }) => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     if (distance > minSwipeDistance) {
-      // Vuốt sang trái -> Trang tiếp theo (hoặc lặp lại trang 1 khi ở trang cuối)
       setPage((prev) => (prev < totalPages ? prev + 1 : 1));
     } else if (distance < -minSwipeDistance) {
-      // Vuốt sang phải -> Trang trước
       setPage((prev) => (prev > 1 ? prev - 1 : 1));
     }
   };
@@ -123,6 +150,9 @@ export const CelebrationLetter = ({ name }) => {
 
   return (
     <div className="letter-wrapper">
+      {/* Top Banner when Page 5 is active */}
+      {page === 5 && <CakeBanner />}
+
       <div className="envelope-back" />
       <div
         className="letter-paper animate-card-shuffle-in"

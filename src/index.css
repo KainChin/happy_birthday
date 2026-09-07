@@ -45,6 +45,11 @@ html, body, #root {
   100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
 }
 
+@keyframes cakeMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .animate-fade-in { animation: fadeInCard 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-spin { animation: spin 0.8s linear infinite; }
 .animate-card-shuffle-in { animation: shuffleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
@@ -58,6 +63,56 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   padding: 8px 12px;
+}
+
+/* Top Birthday Cake Marquee Banner (Triggered on Page 5) */
+.cake-banner-container {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: 90%;
+  max-width: 480px;
+  height: 44px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(82, 28, 46, 0.94), rgba(36, 14, 22, 0.96));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid var(--color-gold-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 20px rgba(229, 193, 88, 0.45);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.cake-banner-track {
+  display: flex;
+  width: max-content;
+  animation: cakeMarquee 10s linear infinite;
+}
+
+.cake-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  padding-right: 16px;
+}
+
+.cake-emoji {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 6px rgba(229, 193, 88, 0.8));
+}
+
+.cake-text {
+  font-family: var(--font-script);
+  font-size: 1.35rem;
+  color: var(--color-gold-light);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(229, 193, 88, 0.5);
+  letter-spacing: 0.02em;
 }
 
 /* Horizontal U-Shape Surround Layout (Photos pulled closer to letter) */
@@ -99,7 +154,7 @@ html, body, #root {
   width: 100%;
 }
 
-/* Letter Component Styling (Center Aligned, Swipe Gesture Enabled) */
+/* Letter Component Styling (Center Aligned, Handwritten Page Number) */
 .letter-wrapper {
   position: relative;
   width: 100%;
@@ -200,13 +255,6 @@ html, body, #root {
   margin-top: auto;
   padding-top: 6px;
   border-top: 1px dashed rgba(82, 28, 46, 0.22);
-}
-
-.letter-swipe-hint {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  color: rgba(82, 28, 46, 0.55);
-  font-style: italic;
 }
 
 .letter-page-number {
@@ -390,6 +438,15 @@ html, body, #root {
   .letter-title { font-size: 1.18rem !important; }
   .letter-subtitle { font-size: 1.05rem !important; }
   .letter-body { font-size: 1.08rem !important; }
+
+  .cake-banner-container {
+    top: 8px !important;
+    height: 38px !important;
+  }
+
+  .cake-text {
+    font-size: 1.15rem !important;
+  }
 
   .login-card-container {
     padding: 24px 14px 20px 14px !important;
