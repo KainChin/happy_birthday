@@ -455,12 +455,59 @@ html, body, #root {
   border-top: 1px dashed rgba(82, 28, 46, 0.22);
 }
 
+.letter-footer-spacer {
+  width: 36px;
+}
+
+.letter-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.letter-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.letter-circle-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e5c158 0%, #d4af37 100%);
+  color: #3b0a17;
+  border: 1.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(212, 175, 55, 0.4), 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  outline: none;
+  padding: 0;
+}
+
+.letter-circle-btn:hover {
+  transform: scale(1.12);
+  background: linear-gradient(135deg, #fff2a8 0%, #e5c158 100%);
+  box-shadow: 0 5px 16px rgba(212, 175, 55, 0.6), 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.letter-circle-btn:active {
+  transform: scale(0.94);
+}
+
 .letter-page-number {
   font-family: var(--font-script);
   font-size: 1.15rem;
   font-style: italic;
   color: #611e32;
   font-weight: 600;
+  min-width: 36px;
+  text-align: right;
 }
 
 /* DESKTOP / LAPTOP FULL-VIEWPORT FIT (Photos Close to Letter) */

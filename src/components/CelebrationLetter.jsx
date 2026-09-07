@@ -95,83 +95,40 @@ export const CelebrationLetter = ({ name }) => {
   const [showCakeRain, setShowCakeRain] = useState(false);
   const [isBalloonPopped, setIsBalloonPopped] = useState(false);
 
-  // Reset balloon state whenever user navigates away from page 5 (so re-reading restores the sun balloon)
-  useEffect(() => {
-    if (page !== 5) {
-      setIsBalloonPopped(false);
-    }
-  }, [page]);
-
   const displayName = formatCapitalizedName(name);
 
-  // Touch & Mouse drag gesture states for swipe
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  const [isMouseDown, setIsMouseDown] = useState(false);
-  const [mouseDownX, setMouseDownX] = useState(0);
-
   const letterPages = [
-    // Page 1
+    // Page 1: Vui vẻ & Tuổi mới
     {
       title: `Gửi ${displayName},`,
-      subtitle: 'Chúc mừng sinh nhật cô gái đặc biệt! ✨',
+      subtitle: 'Chúc mừng sinh nhật tuổi mới rạng rỡ! ✨',
       content: (
         <p>
-          Bước sang tuổi mới, chúc cậu luôn giữ trọn vẻ rạng rỡ, xinh đẹp và nụ cười cuốn hút này.
+          Nhân ngày sinh nhật, chúc cậu luôn giữ trọn niềm vui, sự rạng rỡ và nụ cười tươi tắn trên môi. Mong tuổi mới mang đến cho cậu thật nhiều khoảnh khắc bình yên và những niềm vui nho nhỏ mỗi ngày!
         </p>
       )
     },
-    // Page 2
+    // Page 2: Công việc & Thành công
     {
-      title: 'Tỏa Sáng Theo Cách Riêng 🌟',
-      content: (
-        <>
-          <p style={{ marginBottom: '6px' }}>
-            Mong rằng trên chặng đường phía trước, mọi dự định của cậu đều hanh thông.
-          </p>
-          <p>
-            Gặt hái thật nhiều thành tựu rực rỡ và luôn kiêu hãnh tỏa sáng theo cách riêng của mình!
-          </p>
-        </>
-      )
-    },
-    // Page 3: Thơ 6 chữ (Khổ 1)
-    {
-      title: 'Nắng Thu Tháng Chín 🍂',
+      title: 'Thành Công & Hanh Thông 💼',
+      subtitle: 'Vững bước trên chặng đường phía trước',
       content: (
         <p>
-          Tháng Chín mang heo may về,<br />
-          Gió khẽ mơn suối tóc mây.<br />
-          Chúc Khánh Phương thêm rạng rỡ,<br />
-          Nụ cười đắm say lòng ai.
+          Chúc công việc và mọi dự định của cậu luôn thuận lợi, suôn sẻ và gặt hái được nhiều thành công rực rỡ. Mong rằng mọi nỗ lực của cậu đều sẽ mang lại những kết quả xứng đáng nhất!
         </p>
       )
     },
-    // Page 4: Thơ 6 chữ (Khổ 2)
+    // Page 3: May mắn & Trọn vẹn
     {
-      title: 'Gói Trọn Thương Yêu 💖',
-      content: (
-        <p>
-          Chẳng phải tình yêu xa vắng,<br />
-          Chỉ là người thương thầm mong.<br />
-          Mong đường đời luôn êm dịu,<br />
-          Bình an gói trọn thương yêu.
-        </p>
-      )
-    },
-    // Page 5: Thơ 6 chữ (Khổ 3)
-    {
-      title: 'Rực Rỡ Tuổi Mới 🎉',
+      title: 'May Mắn & Trọn Vẹn 🍀',
+      subtitle: 'Đón nhận những điều tuyệt vời nhất',
       content: (
         <>
           <p style={{ marginBottom: '8px' }}>
-            Mỗi ngày gặp nhiều may mắn,<br />
-            Áo dài nón lá thắm tươi.<br />
-            Giữ trọn niềm vui tuổi mới,<br />
-            Rạng rỡ nhất cả trần đời!
+            Mong chặng đường sắp tới của cậu luôn ngập tràn may mắn, bình an và nhiều trải nghiệm thú vị. Cùng đón chờ một tuổi mới thật rực rỡ và tràn đầy hạnh phúc cậu nhé!
           </p>
           <p style={{ fontSize: '0.96rem', color: '#521c2e', fontStyle: 'italic', fontWeight: 600 }}>
-            ✨ Hãy luôn mỉm cười và đón nhận những điều tuyệt vời nhất bạn nhé!
+            ✨ Chúc cậu luôn vui vẻ, may mắn và hạnh phúc mỗi ngày!
           </p>
         </>
       )
@@ -180,7 +137,13 @@ export const CelebrationLetter = ({ name }) => {
 
   const totalPages = letterPages.length;
   const currentPageData = letterPages[page - 1];
-  const minSwipeDistance = 35;
+
+  // Reset balloon state whenever user navigates away from final page
+  useEffect(() => {
+    if (page !== totalPages) {
+      setIsBalloonPopped(false);
+    }
+  }, [page, totalPages]);
 
   const handlePopBalloon = () => {
     setIsBalloonPopped(true);
@@ -191,45 +154,10 @@ export const CelebrationLetter = ({ name }) => {
     }, 7000);
   };
 
-  const handleTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    if (distance > minSwipeDistance) {
-      setPage((prev) => (prev < totalPages ? prev + 1 : 1));
-    } else if (distance < -minSwipeDistance) {
-      setPage((prev) => (prev > 1 ? prev - 1 : 1));
-    }
-  };
-
-  const handleMouseDown = (e) => {
-    setIsMouseDown(true);
-    setMouseDownX(e.clientX);
-  };
-
-  const handleMouseUp = (e) => {
-    if (!isMouseDown) return;
-    setIsMouseDown(false);
-    const distance = mouseDownX - e.clientX;
-    if (distance > minSwipeDistance) {
-      setPage((prev) => (prev < totalPages ? prev + 1 : 1));
-    } else if (distance < -minSwipeDistance) {
-      setPage((prev) => (prev > 1 ? prev - 1 : 1));
-    }
-  };
-
   return (
     <div className="letter-wrapper">
-      {/* Sun Balloon when Page 5 is active & not popped */}
-      {page === 5 && !isBalloonPopped && <SunBalloon onPop={handlePopBalloon} />}
+      {/* Sun Balloon when Final Page (Page 3) is active & not popped */}
+      {page === totalPages && !isBalloonPopped && <SunBalloon onPop={handlePopBalloon} />}
 
       {/* Raining Birthday Cakes Effect when Balloon is popped */}
       {showCakeRain && <CakeRain />}
@@ -238,12 +166,6 @@ export const CelebrationLetter = ({ name }) => {
       <div
         className="letter-paper animate-card-shuffle-in"
         key={page}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        style={{ cursor: isMouseDown ? 'grabbing' : 'grab', userSelect: 'none' }}
       >
         <PaperclipIcon />
 
@@ -262,9 +184,49 @@ export const CelebrationLetter = ({ name }) => {
           {currentPageData.content}
         </div>
 
-        {/* Dashed line & Footer bar: Page number on right above dashed line */}
+        {/* Dashed line & Footer bar: Centered circular arrow navigation button(s) */}
         <div className="letter-footer-bar">
-          <div />
+          <div className="letter-footer-spacer" />
+          <div className="letter-nav-container">
+            {page < totalPages ? (
+              <button
+                className="letter-circle-btn"
+                onClick={() => setPage((prev) => prev + 1)}
+                title="Trang tiếp theo"
+                aria-label="Trang tiếp theo"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            ) : (
+              <div className="letter-btn-group">
+                <button
+                  className="letter-circle-btn"
+                  onClick={() => setPage((prev) => prev - 1)}
+                  title="Trang trước"
+                  aria-label="Trang trước"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                  </svg>
+                </button>
+                <button
+                  className="letter-circle-btn"
+                  onClick={() => setPage(1)}
+                  title="Về trang 1"
+                  aria-label="Về trang 1"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
           <span className="letter-page-number">{page} / {totalPages}</span>
         </div>
       </div>

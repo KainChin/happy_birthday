@@ -35,7 +35,7 @@ export const CelebrationHeader = ({ name }) => {
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={titleWrapperStyle}>
         <h1 style={titleStyle}>
-          Happy Birthday, <span style={highlightNameStyle}>{displayName}</span>!
+          Happy Birthday, <span style={highlightNameStyle}>{displayName}</span>
         </h1>
       </div>
     </div>
