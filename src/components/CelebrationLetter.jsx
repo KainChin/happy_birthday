@@ -3,13 +3,16 @@ import { PaperclipIcon } from './PaperclipIcon';
 import { formatCapitalizedName } from '../utils/validation';
 
 export const CakeRain = () => {
-  // Generate 95 randomized falling cake items
-  const cakeItems = Array.from({ length: 95 }).map((_, i) => ({
+  // Optimized item count (24 on mobile, 36 on desktop) for 60fps smooth animation without lag
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const count = isMobile ? 24 : 36;
+
+  const cakeItems = Array.from({ length: count }).map((_, i) => ({
     id: i,
-    left: `${Math.random() * 98}%`,
-    duration: `${2.2 + Math.random() * 3.5}s`,
+    left: `${Math.random() * 95}%`,
+    duration: `${2.2 + Math.random() * 2.6}s`,
     delay: `${Math.random() * 2.2}s`,
-    fontSize: `${1.5 + Math.random() * 2.2}rem`,
+    fontSize: isMobile ? `${1.4 + Math.random() * 1.5}rem` : `${1.6 + Math.random() * 1.8}rem`,
     icon: ['🎂', '🍰', '🧁', '🎂', '✨', '🎂', '🕯️', '🎁'][i % 8],
     rotation: `${(Math.random() - 0.5) * 360}deg`
   }));
